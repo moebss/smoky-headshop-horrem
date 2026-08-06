@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Kreativrichtung: Provokant / Expressiv Maximalistisch / Peer / Resonant */
+/* Begründung: Smoky Head & Shisha Shop ist der 1. Head- & Shishashop im Rhein-Erft Kreis seit 2014. Dunkler, atmosphärischer Lounge-Style mit edlem Amber/Kupfer-Glow und realistischer Rauch-Animation. */
+
+@theme {
+  --color-brand-base: oklch(14% 0.01 45);
+  --color-brand-surface: oklch(18% 0.02 45);
+  --color-brand-accent: oklch(68% 0.18 45); /* Amber / Kupfer Gold */
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Lora', serif;
+}
+
+@keyframes smoke-float {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-80px) scale(1.4) rotate(15deg);
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-160px) scale(2) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+@utility animate-smoke {
+  animation: smoke-float 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@utility animate-smoke-delay-1 {
+  animation: smoke-float 7s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 1.5s;
+}
+
+@utility animate-smoke-delay-2 {
+  animation: smoke-float 8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 3s;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}
