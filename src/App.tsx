@@ -1,16 +1,21 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award } from 'lucide-react';
+import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Tag } from 'lucide-react';
+
+import heroShisha from './images/hero_shisha.jpg';
+import tobaccoImg from './images/tobacco.jpg';
+import vapesImg from './images/vapes.jpg';
+import headshopImg from './images/headshop.jpg';
 
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<'all' | 'shisha' | 'vape' | 'headshop'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'shisha' | 'vape' | 'headshop'>('all');
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-zinc-100 selection:bg-amber-500 selection:text-zinc-950 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div className="min-h-screen bg-[#0b0b0e] text-zinc-100 selection:bg-amber-500 selection:text-zinc-950 font-['Plus_Jakarta_Sans',sans-serif]">
       
-      {/* Top Bar Header */}
+      {/* Top Header */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-zinc-950/95 border-b border-zinc-800/80">
         <div className="hidden lg:block bg-zinc-900/90 border-b border-zinc-800/60 py-2.5 px-6 text-xs text-zinc-300">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -42,11 +47,11 @@ export default function App() {
                 <Flame className="w-6 h-6 stroke-[2.5]" />
               </div>
               <div>
-                <span className="font-heading text-2xl font-black uppercase text-white block leading-none tracking-tight">
+                <span className="font-heading text-xl font-black uppercase text-white block leading-none tracking-tight">
                   SMOKY <span className="text-amber-500">HEAD&SHISHA</span>
                 </span>
                 <span className="text-[10px] text-amber-400 font-extrabold uppercase tracking-widest block mt-1">
-                  PREMIUM HEADSHOP & SHISHA STORE HORREM
+                  PREMIUM SHISHA STORE & HEADSHOP HORREM
                 </span>
               </div>
             </a>
@@ -64,17 +69,17 @@ export default function App() {
                 onClick={() => setIsContactOpen(true)}
                 className="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-all hover:-translate-y-0.5"
               >
-                <span>Anfrage & Vorbestellung</span>
+                <span>Produkte Reservieren</span>
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 bg-smoky-grid border-b border-zinc-800 overflow-hidden">
+      {/* Hero Section (Echtes Shisha-Foto im Hero!) */}
+      <section className="relative py-20 lg:py-28 bg-smoke-atmosphere border-b border-zinc-800 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-12 items-center">
             
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-8">
@@ -85,27 +90,27 @@ export default function App() {
               </div>
 
               <h1 className="font-heading text-4.5xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-[1.02] font-black">
-                PREMIUM SHISHAS, <br />
-                <span className="text-amber-500">TABAK & VAPES IN HORREM.</span>
+                DEIN SHISHA & <br />
+                <span className="text-amber-500">HEADSHOP IN HORREM.</span>
               </h1>
 
               <p className="text-zinc-200 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
-                Riesige Auswahl an Shisha-Pfeifen, Shisha-Tabak der Top-Marken, Naturkohle, Einweg & Mehrweg Vapes, Vaporizern sowie Headshop-Zubehör direkt an der Bahnhofstraße 20 in Horrem.
+                Riesige Auswahl an Edelstahl-Shishas, Phunnels, Shisha-Tabak der Top-Marken, 26mm Naturkohle, E-Zigaretten & Vapes sowie professionellem Headshop-Zubehör direkt vor Ort in Kerpen-Horrem.
               </p>
 
-              {/* Quick Feature Badges */}
+              {/* High-Contrast Feature Badges */}
               <div className="grid sm:grid-cols-3 gap-3.5 pt-2">
                 <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 border-l-4 border-l-amber-500">
-                  <span className="text-xs font-bold text-amber-400 block mb-1">Top-Sortiment</span>
-                  <span className="text-sm font-bold text-white">Alle führenden Marken</span>
+                  <span className="text-xs font-bold text-amber-400 block mb-1">100% Originale</span>
+                  <span className="text-sm font-bold text-white">Top-Marken & Tabak</span>
                 </div>
                 <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 border-l-4 border-l-amber-500">
-                  <span className="text-xs font-bold text-amber-400 block mb-1">Kompetente Beratung</span>
-                  <span className="text-sm font-bold text-white">Fachwissen vor Ort</span>
+                  <span className="text-xs font-bold text-amber-400 block mb-1">Echte Beratung</span>
+                  <span className="text-sm font-bold text-white">Kopf- & Setups-Tipps</span>
                 </div>
                 <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 border-l-4 border-l-amber-500">
-                  <span className="text-xs font-bold text-amber-400 block mb-1">Beste Lage</span>
-                  <span className="text-sm font-bold text-white">Bahnhofstraße Horrem</span>
+                  <span className="text-xs font-bold text-amber-400 block mb-1">Zentral gelegen</span>
+                  <span className="text-sm font-bold text-white">Bahnhofstraße 20</span>
                 </div>
               </div>
 
@@ -116,7 +121,7 @@ export default function App() {
                   className="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold px-8 py-4 rounded-xl text-xs uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-3 group"
                 >
                   <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
-                  <span>Produkte & Reservierung</span>
+                  <span>Sortiment & Vorbestellung</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
 
@@ -137,20 +142,20 @@ export default function App() {
                   ))}
                 </div>
                 <span className="text-xs text-zinc-300 font-semibold">
-                  <strong className="text-white">4.6 / 5.0 Sterne</strong> aus über 120 Google-Bewertungen
+                  <strong className="text-white">4.6 / 5.0 Sterne</strong> aus 120+ Google-Bewertungen in Kerpen-Horrem
                 </span>
               </div>
 
             </div>
 
-            {/* Right Showcase Image */}
+            {/* Right Hero Image (Echtes Studio-Shisha Bild!) */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="relative rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-900 aspect-[4/5]">
                   <img
-                    src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=1000&q=80"
-                    alt="Smoky Headshop Horrem Shisha Store"
-                    className="w-full h-full object-cover"
+                    src={heroShisha}
+                    alt="Smoky Headshop Horrem Shisha Pfeife"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
                   
@@ -160,7 +165,7 @@ export default function App() {
                         Smoky Head&Shisha Shop
                       </span>
                       <span className="text-sm font-bold text-white">
-                        Bahnhofstraße 20, Kerpen-Horrem
+                        Bahnhofstraße 20, 50169 Horrem
                       </span>
                     </div>
                     <CheckCircle2 className="w-8 h-8 text-amber-500 shrink-0" />
@@ -179,60 +184,60 @@ export default function App() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-4 rounded-xl bg-zinc-950/60 border border-zinc-800">
               <span className="font-heading text-3xl font-black text-amber-500 block">4.6 ★</span>
-              <span className="text-xs text-zinc-300 font-medium">Google Sterne-Note</span>
+              <span className="text-xs text-zinc-300 font-medium">Google Sterne-Bewertung</span>
             </div>
             <div className="p-4 rounded-xl bg-zinc-950/60 border border-zinc-800">
               <span className="font-heading text-3xl font-black text-white block">500+</span>
-              <span className="text-xs text-zinc-300 font-medium">Produkte auf Lager</span>
+              <span className="text-xs text-zinc-300 font-medium">Shishas, Tabak & Vapes</span>
             </div>
             <div className="p-4 rounded-xl bg-zinc-950/60 border border-zinc-800">
               <span className="font-heading text-3xl font-black text-amber-500 block">100%</span>
-              <span className="text-xs text-zinc-300 font-medium">Originale Markenware</span>
+              <span className="text-xs text-zinc-300 font-medium">Originalware & Fachberatung</span>
             </div>
             <div className="p-4 rounded-xl bg-zinc-950/60 border border-zinc-800">
-              <span className="font-heading text-3xl font-black text-white block">Kerpen</span>
-              <span className="text-xs text-zinc-300 font-medium">Zentral in Horrem</span>
+              <span className="font-heading text-3xl font-black text-white block">Horrem</span>
+              <span className="text-xs text-zinc-300 font-medium">Zentral am Bahnhof</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Product Categories Section */}
-      <section id="products" className="py-24 bg-[#09090b] text-white border-b border-zinc-900">
+      {/* Real Product Showcase Section with Authentic Images */}
+      <section id="products" className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
             <div>
               <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-3">
-                Unser Sortiment
+                Produkt-Kategorien
               </span>
               <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">
-                PFEIFEN, TABAK, VAPES & ACCESSORIES
+                UNSER SORTIMENT VOR ORT IN HORREM
               </h2>
             </div>
 
             <div className="flex items-center gap-2 bg-zinc-900 p-1.5 rounded-xl border border-zinc-800">
               <button
-                onClick={() => setActiveCategory('all')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeCategory === 'all' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
+                onClick={() => setActiveTab('all')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeTab === 'all' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
               >
                 Alle
               </button>
               <button
-                onClick={() => setActiveCategory('shisha')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeCategory === 'shisha' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
+                onClick={() => setActiveTab('shisha')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeTab === 'shisha' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
               >
                 Shisha & Tabak
               </button>
               <button
-                onClick={() => setActiveCategory('vape')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeCategory === 'vape' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
+                onClick={() => setActiveTab('vape')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeTab === 'vape' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
               >
-                Vapes & Pods
+                Vapes
               </button>
               <button
-                onClick={() => setActiveCategory('headshop')}
-                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeCategory === 'headshop' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
+                onClick={() => setActiveTab('headshop')}
+                className={`px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all ${activeTab === 'headshop' ? 'bg-amber-500 text-zinc-950 shadow' : 'text-zinc-400 hover:text-white'}`}
               >
                 Headshop
               </button>
@@ -242,69 +247,60 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: Flame,
-                category: 'shisha',
-                title: 'Shishas & Komplett-Sets',
-                desc: 'Edelstahl- & Aluminium-Shishas von Moze, Ocean Hookah, Aladin & Amy Deluxe inklusive Phunnel Köpfe & HMDs.'
+                title: "Shishas & Komplett-Setups",
+                category: "shisha",
+                img: heroShisha,
+                desc: "Hochwertige Edelstahl-Shishas von Moze, Ocean Hookah, Aladin & Amy Deluxe. Inklusive Zubehör, Phunnels & HMDs."
               },
               {
-                icon: Sparkles,
-                category: 'shisha',
-                title: 'Shisha-Tabak & Naturkohle',
-                desc: 'Große Auswahl an Bestseller-Sorten von Nameless, Holster, 187 Strassenbande, O’s Tobacco & 26mm Premium Kokoskohle.'
+                title: "Shisha-Tabak & Naturkohle",
+                category: "shisha",
+                img: tobaccoImg,
+                desc: "Riesige Auswahl an Tabak-Bestsellern von Nameless, Holster, O’s, 187 Strassenbande & Kokoskohle in 26mm."
               },
               {
-                icon: Zap,
-                category: 'vape',
-                title: 'Vapes & E-Zigaretten',
-                desc: 'Einweg-Vapes, Pod-Systeme (Elfbar, Lost Mary, Pod Salt) & erstklassige E-Liquids in allen Geschmacksrichtungen.'
+                title: "Einweg & Mehrweg Vapes",
+                category: "vape",
+                img: vapesImg,
+                desc: "Neuste Vape-Pods, E-Zigaretten & Liquids (Elfbar, Lost Mary, Pod Salt) in allen erdenklichen Flavors."
               },
               {
-                icon: Compass,
-                category: 'headshop',
-                title: 'Vaporizer & Kräuter-Zubehör',
-                desc: 'Dry Herb Vaporizer, Metal-Grinder, Blunts, Papers, Aktivkohlefilter & Waagen höchster Qualität.'
-              },
-              {
-                icon: Award,
-                category: 'headshop',
-                title: 'Glaskunst & Bongs',
-                desc: 'Glasbongs, Chillum-Zubehör, Reiniger, Aschenbecher & stylische Lifestyle-Accessories.'
-              },
-              {
-                icon: ShieldCheck,
-                category: 'headshop',
-                title: 'Persönliche Beratung Vor Ort',
-                desc: 'Unsere Experten beraten dich individuell zu Setups, Tabakköpfen, Nikotinstärken & Pflege.'
+                title: "Headshop & Glaskunst",
+                category: "headshop",
+                img: headshopImg,
+                desc: "Vaporizer für Kräuter, Präzisions-Grinder, Glasbongs, Aktivkohlefilter, Blunts & Papers."
               }
             ]
-            .filter(item => activeCategory === 'all' || item.category === activeCategory)
-            .map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={idx} className="smoky-card rounded-2xl p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="w-14 h-14 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center text-amber-500 mb-6">
-                      <Icon className="w-7 h-7" />
+            .filter(p => activeTab === 'all' || p.category === activeTab)
+            .map((p, idx) => (
+              <div key={idx} className="product-card rounded-2xl overflow-hidden group flex flex-col justify-between">
+                <div>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+                    <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-amber-500 text-zinc-950 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider shadow">
+                        Top-Qualität
+                      </span>
                     </div>
-                    <h3 className="font-heading text-2xl font-bold text-white mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-zinc-300 text-sm leading-relaxed mb-6 font-normal">
-                      {item.desc}
-                    </p>
                   </div>
+                  <div className="p-6">
+                    <h3 className="font-heading text-xl font-bold text-white mb-2">{p.title}</h3>
+                    <p className="text-zinc-300 text-sm leading-relaxed">{p.desc}</p>
+                  </div>
+                </div>
 
+                <div className="p-6 pt-0">
                   <button
                     onClick={() => setIsContactOpen(true)}
-                    className="w-full bg-zinc-950 hover:bg-amber-500 text-zinc-200 hover:text-zinc-950 border border-zinc-800 hover:border-amber-500 font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
+                    className="w-full bg-zinc-900 hover:bg-amber-500 text-zinc-200 hover:text-zinc-950 border border-zinc-800 hover:border-amber-500 font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
                   >
                     <span>Im Laden Anfragen</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
 
         </div>
@@ -315,7 +311,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-3">Community Urteil</span>
-            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white mb-6 font-black">Das sagen unsere Kunden in Horrem</h2>
+            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white mb-6 font-black">Echte Google-Bewertungen</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -333,7 +329,7 @@ export default function App() {
                 text: "Sehr gepflegter Shop direkt an der Bahnhofstraße. Mitarbeiter nehmen sich Zeit und helfen sofort weiter."
               }
             ].map((t, idx) => (
-              <div key={idx} className="smoky-card rounded-2xl p-8 space-y-4">
+              <div key={idx} className="product-card rounded-2xl p-8 space-y-4">
                 <div className="flex text-amber-500">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
@@ -351,9 +347,9 @@ export default function App() {
       </section>
 
       {/* Location & Opening Hours */}
-      <section className="py-20 bg-[#09090b] text-white border-b border-zinc-900">
+      <section className="py-20 bg-[#0b0b0e] text-white border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center bg-zinc-900 border border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center bg-zinc-900/90 border border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
             <div className="space-y-6">
               <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block">Besuche Uns Vor Ort</span>
               <h3 className="font-heading text-3xl sm:text-4xl font-black text-white uppercase">SMOKY HEAD&SHISHA SHOP</h3>
