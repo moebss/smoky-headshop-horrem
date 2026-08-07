@@ -140,7 +140,7 @@ export default function App() {
             </h1>
 
             <p className="text-zinc-200 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl drop-shadow-md">
-              Deine Top-Adresse in Kerpen-Horrem für Premium Edelstahl-Shishas, Phunnels, Tabak-Bestseller, 26mm Naturkohle, Einweg/Mehrweg Vapes & Headshop-Zubehör.
+              Der erste Head-&Shishashop im Rhein-Erft-Kreis – seit Februar 2014 eure Anlaufstelle für Shishas, Tabak von A wie Al Fakher bis Z wie Zomo, Vapes, Bongs, Vaporizer & Rauchzubehör.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
@@ -168,10 +168,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
+              { val: 'Seit 2014', label: 'Erster Head-&Shishashop im Rhein-Erft-Kreis', amber: true },
+              { val: '75 m²', label: 'Ladenfläche voller Auswahl', amber: false },
               { val: '4.6 ★', label: 'Google Sterne-Bewertung', amber: true },
-              { val: '500+', label: 'Shishas, Tabak & Vapes', amber: false },
-              { val: '100%', label: 'Originalware & Fachberatung', amber: true },
-              { val: 'Horrem', label: 'Zentral am Bahnhof', amber: false },
+              { val: 'Horrem', label: 'Bahnhofstraße 20', amber: false },
             ].map((s, i) => (
               <div key={i} className="p-5 rounded-2xl bg-stone-50 border border-stone-200">
                 <span className={`font-heading text-3xl font-black block ${s.amber ? 'text-amber-600' : 'text-stone-900'}`}>{s.val}</span>
@@ -195,7 +195,7 @@ export default function App() {
                   <div className="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center shadow-lg">
                     <Heart className="w-5 h-5 text-white fill-white" />
                   </div>
-                  <span className="text-white font-bold text-sm drop-shadow-md">Mit Leidenschaft seit Tag 1</span>
+                  <span className="text-white font-bold text-sm drop-shadow-md">Seit Februar 2014 für euch da</span>
                 </div>
               </div>
             </div>
@@ -206,25 +206,25 @@ export default function App() {
                 MEHR ALS NUR EIN SHOP – <span className="text-amber-600">DEIN SPOT IN HORREM.</span>
               </h2>
               <p className="text-stone-600 text-base leading-relaxed">
-                Smoky Head&Shisha ist kein anonymer Online-Versand, sondern ein echter Laden mit echten Leuten. Hier in Horrem, direkt an der Bahnhofstraße 20, stehen wir dir persönlich zur Seite – egal ob du deine erste Shisha suchst, den perfekten Tabak-Kopf bauen willst oder einfach nach den neusten Vape-Flavors schauen möchtest.
+                Im Februar 2014 haben wir den ersten Head-&Shishashop im Rhein-Erft-Kreis eröffnet. Seitdem begrüßt euch unser junges, dynamisches Team aus dem Großraum Köln auf 75 m² in einem freundlichen Ambiente – alles rund ums Thema Wasserpfeifen und Rauchzubehör.
               </p>
               <p className="text-stone-600 text-base leading-relaxed">
-                Unser Team kennt jede Marke, jeden Phunnel und jede Sorte im Regal und berät dich ehrlich – nicht nach Marge, sondern nach dem, was zu dir passt. Von Moze und Ocean Hookah über Nameless bis Pod Salt: Wir testen selbst, was wir verkaufen.
+                Durch unsere jahrelange Erfahrung bieten wir euch fachliche und kompetente Beratung. Shisha-Tabak ist in Hülle und Fülle vorhanden – von A wie Al Fakher bis Z wie Zomo steht alles in den Vitrinen. Neuheiten ziehen regelmäßig bei uns ein und spezielle Wünsche versuchen wir immer zu realisieren. Auch im Growbereich stehen wir euch gerne beratend zur Seite.
               </p>
 
               <div className="grid sm:grid-cols-3 gap-4 pt-4">
                 <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200">
                   <Users className="w-8 h-8 text-amber-600 shrink-0" />
                   <div>
-                    <span className="font-bold text-stone-900 text-sm block">Persönliche Beratung</span>
-                    <span className="text-xs text-stone-500">Vor Ort, nicht per Bot</span>
+                    <span className="font-bold text-stone-900 text-sm block">Fachberatung</span>
+                    <span className="text-xs text-stone-500">Jahrelange Erfahrung</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200">
                   <ShieldCheck className="w-8 h-8 text-amber-600 shrink-0" />
                   <div>
-                    <span className="font-bold text-stone-900 text-sm block">Nur Originale</span>
-                    <span className="text-xs text-stone-500">Keine Fakes, nie</span>
+                    <span className="font-bold text-stone-900 text-sm block">75 m² Auswahl</span>
+                    <span className="text-xs text-stone-500">Alles vor Ort & sofort</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-200">
@@ -260,10 +260,10 @@ export default function App() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Shishas & Komplett-Setups", category: "shisha" as const, img: heroShisha, desc: "Edelstahl-Shishas von Moze, Ocean Hookah, Aladin & Amy Deluxe. Inklusive Zubehör, Phunnels & HMDs." },
-              { title: "Shisha-Tabak & Naturkohle", category: "shisha" as const, img: tobaccoImg, desc: "Riesige Auswahl an Bestsellern von Nameless, Holster, O's, 187 Strassenbande & Kokoskohle in 26mm." },
-              { title: "Einweg & Mehrweg Vapes", category: "vape" as const, img: vapesImg, desc: "Neuste Vape-Pods, E-Zigaretten & Liquids (Elfbar, Lost Mary, Pod Salt) in allen erdenklichen Flavors." },
-              { title: "Headshop & Glaskunst", category: "headshop" as const, img: headshopImg, desc: "Vaporizer für Kräuter, Präzisions-Grinder, Glasbongs, Aktivkohlefilter, Blunts & Papers." },
+              { title: "Shishas & Komplett-Setups", category: "shisha" as const, img: heroShisha, desc: "Vom kleinen Geldbeutel bis zur Luxus-Hookah – Edelstahl-Shishas inklusive Köpfe, Mundstücke, Molassefänger, LED-Untersetzer und HMDs zum Pimpen eurer Pfeife." },
+              { title: "Shisha-Tabak & Kohle", category: "shisha" as const, img: tobaccoImg, desc: "Von A wie Al Fakher bis Z wie Zomo – Tabak-Neuheiten ziehen regelmäßig bei uns ein. Dazu Naturkohle und Selbstzünder mit passenden Kohleanzündern." },
+              { title: "Einweg & Mehrweg Vapes", category: "vape" as const, img: vapesImg, desc: "Neuste Vape-Pods, E-Zigaretten & Liquids (Elfbar, Lost Mary, Pod Salt) in allen erdenklichen Flavors – mit kompetenter Beratung." },
+              { title: "Headshop & Rauchzubehör", category: "headshop" as const, img: headshopImg, desc: "Große Auswahl an Bongs, Köpfen, Vorkühler, Purpfeifen, Grindern, Blättchen, Vaporizern, Aktivkohlefiltern und vieles mehr." },
             ]
             .filter(p => activeTab === 'all' || p.category === activeTab)
             .map((p, idx) => (
