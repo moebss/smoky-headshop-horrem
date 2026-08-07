@@ -119,6 +119,28 @@ export default function App() {
           <div className="absolute inset-0 bg-amber-500/10 mix-blend-overlay" />
         </div>
 
+        {/* Animated Smoke Particles rising from the Shisha */}
+        <div className="smoke-container">
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+          <div className="smoke-particle" />
+        </div>
+
+        {/* Warm Amber Coal Glow Particles */}
+        <div className="smoke-container">
+          <div className="smoke-glow" />
+          <div className="smoke-glow" />
+          <div className="smoke-glow" />
+        </div>
+
+        {/* Pulsing Ember Glow at the bottom */}
+        <div className="ember-glow" />
+
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl space-y-8">
