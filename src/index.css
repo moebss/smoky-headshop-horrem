@@ -4,8 +4,8 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #0b0b0e;
-    color: #f4f4f5;
+    background-color: #fafaf9;
+    color: #1c1917;
     text-wrap: pretty;
   }
 
@@ -17,30 +17,21 @@
   }
 }
 
-/* Smoke Atmosphere Backdrop */
-.bg-smoke-atmosphere {
-  background-color: #0b0b0e;
-  background-image: 
-    radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.18), transparent 70%),
-    radial-gradient(circle at 80% 80%, rgba(217, 119, 6, 0.1), transparent 60%);
-}
-
 .product-card {
-  background: rgba(20, 20, 24, 0.95);
-  border: 1px solid rgba(63, 63, 70, 0.6);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  background: #ffffff;
+  border: 1px solid rgba(214, 211, 209, 0.8);
+  box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-  border-color: rgba(245, 158, 11, 0.6);
-  box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.25), 0 0 0 1px rgba(245, 158, 11, 0.3) inset;
+  border-color: rgba(217, 119, 6, 0.5);
+  box-shadow: 0 16px 40px -12px rgba(217, 119, 6, 0.15), 0 0 0 1px rgba(217, 119, 6, 0.2) inset;
   transform: translateY(-3px);
 }
 
 /* ══════════════════════════════════════════════
    SHISHA SMOKE ANIMATION SYSTEM
-   Cinematic rising smoke particles with glow
    ══════════════════════════════════════════════ */
 
 .smoke-container {
@@ -61,57 +52,15 @@
   will-change: transform, opacity;
 }
 
-/* Each particle gets unique size, position, speed, delay */
-.smoke-particle:nth-child(1) {
-  width: 120px; height: 120px;
-  left: 65%;
-  animation-duration: 14s;
-  animation-delay: 0s;
-}
-.smoke-particle:nth-child(2) {
-  width: 180px; height: 180px;
-  left: 70%;
-  animation-duration: 18s;
-  animation-delay: 2s;
-}
-.smoke-particle:nth-child(3) {
-  width: 90px; height: 90px;
-  left: 60%;
-  animation-duration: 12s;
-  animation-delay: 4s;
-}
-.smoke-particle:nth-child(4) {
-  width: 200px; height: 200px;
-  left: 75%;
-  animation-duration: 20s;
-  animation-delay: 1s;
-}
-.smoke-particle:nth-child(5) {
-  width: 140px; height: 140px;
-  left: 55%;
-  animation-duration: 16s;
-  animation-delay: 6s;
-}
-.smoke-particle:nth-child(6) {
-  width: 100px; height: 100px;
-  left: 80%;
-  animation-duration: 13s;
-  animation-delay: 3s;
-}
-.smoke-particle:nth-child(7) {
-  width: 160px; height: 160px;
-  left: 50%;
-  animation-duration: 22s;
-  animation-delay: 8s;
-}
-.smoke-particle:nth-child(8) {
-  width: 80px; height: 80px;
-  left: 72%;
-  animation-duration: 11s;
-  animation-delay: 5s;
-}
+.smoke-particle:nth-child(1) { width: 120px; height: 120px; left: 65%; animation-duration: 14s; animation-delay: 0s; }
+.smoke-particle:nth-child(2) { width: 180px; height: 180px; left: 70%; animation-duration: 18s; animation-delay: 2s; }
+.smoke-particle:nth-child(3) { width: 90px; height: 90px; left: 60%; animation-duration: 12s; animation-delay: 4s; }
+.smoke-particle:nth-child(4) { width: 200px; height: 200px; left: 75%; animation-duration: 20s; animation-delay: 1s; }
+.smoke-particle:nth-child(5) { width: 140px; height: 140px; left: 55%; animation-duration: 16s; animation-delay: 6s; }
+.smoke-particle:nth-child(6) { width: 100px; height: 100px; left: 80%; animation-duration: 13s; animation-delay: 3s; }
+.smoke-particle:nth-child(7) { width: 160px; height: 160px; left: 50%; animation-duration: 22s; animation-delay: 8s; }
+.smoke-particle:nth-child(8) { width: 80px; height: 80px; left: 72%; animation-duration: 11s; animation-delay: 5s; }
 
-/* Amber Glow Particles (warm coal glow rising through smoke) */
 .smoke-glow {
   position: absolute;
   bottom: -5%;
@@ -121,51 +70,19 @@
   animation: smokeRise linear infinite;
   will-change: transform, opacity;
 }
-.smoke-glow:nth-child(1) {
-  width: 250px; height: 250px;
-  left: 62%;
-  animation-duration: 20s;
-  animation-delay: 0s;
-}
-.smoke-glow:nth-child(2) {
-  width: 180px; height: 180px;
-  left: 72%;
-  animation-duration: 16s;
-  animation-delay: 4s;
-}
-.smoke-glow:nth-child(3) {
-  width: 300px; height: 300px;
-  left: 55%;
-  animation-duration: 24s;
-  animation-delay: 2s;
-}
+.smoke-glow:nth-child(1) { width: 250px; height: 250px; left: 62%; animation-duration: 20s; animation-delay: 0s; }
+.smoke-glow:nth-child(2) { width: 180px; height: 180px; left: 72%; animation-duration: 16s; animation-delay: 4s; }
+.smoke-glow:nth-child(3) { width: 300px; height: 300px; left: 55%; animation-duration: 24s; animation-delay: 2s; }
 
 @keyframes smokeRise {
-  0% {
-    transform: translateY(0) translateX(0) scale(0.6);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.6;
-  }
-  30% {
-    transform: translateY(-25vh) translateX(15px) scale(1);
-    opacity: 0.5;
-  }
-  60% {
-    transform: translateY(-55vh) translateX(-20px) scale(1.4);
-    opacity: 0.3;
-  }
-  80% {
-    opacity: 0.1;
-  }
-  100% {
-    transform: translateY(-110vh) translateX(10px) scale(1.8);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) translateX(0) scale(0.6); opacity: 0; }
+  10% { opacity: 0.6; }
+  30% { transform: translateY(-25vh) translateX(15px) scale(1); opacity: 0.5; }
+  60% { transform: translateY(-55vh) translateX(-20px) scale(1.4); opacity: 0.3; }
+  80% { opacity: 0.1; }
+  100% { transform: translateY(-110vh) translateX(10px) scale(1.8); opacity: 0; }
 }
 
-/* Subtle pulsing ember glow at bottom of hero */
 .ember-glow {
   position: absolute;
   bottom: 0;
