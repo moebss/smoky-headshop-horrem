@@ -103,7 +103,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Full-Bleed Immersive Hero Section mit echtem Shisha-Hintergrundbild */}
+      {/* Full-Bleed Immersive Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center border-b border-zinc-800 overflow-hidden py-24">
         
         {/* Full-Screen Shisha Background Image */}
@@ -128,7 +128,7 @@ export default function App() {
               <span>Smoky Head&Shisha Shop Horrem • Bahnhofstraße 20</span>
             </div>
 
-            {/* Custom Requested Slogan Headline */}
+            {/* Custom Slogan Headline */}
             <h1 className="font-heading text-4.5xl sm:text-6xl lg:text-7.5xl uppercase tracking-tight text-white leading-[1.02] font-black drop-shadow-2xl">
               KEINEN KOPF MACHEN, <br />
               <span className="text-amber-500 drop-shadow-[0_10px_20px_rgba(245,158,11,0.4)]">
@@ -360,43 +360,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-3">Häufige Fragen</span>
-            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">FAQ – FRAGEN & ANTWORTEN</h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div key={idx} className="bg-zinc-900/90 border border-zinc-800 rounded-2xl overflow-hidden transition-colors">
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base text-white hover:text-amber-400 transition-colors"
-                  >
-                    <span className="flex items-center gap-3">
-                      <HelpCircle className="w-5 h-5 text-amber-500 shrink-0" />
-                      <span>{faq.q}</span>
-                    </span>
-                    <ChevronDown className={`w-5 h-5 text-amber-500 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/60 pt-4">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Location & Permanent Inline Contact Form Section */}
-      <section id="contact-section" className="py-24 bg-zinc-950 text-white border-b border-zinc-900">
+      <section id="contact-section" className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -505,6 +470,41 @@ export default function App() {
 
           </div>
 
+        </div>
+      </section>
+
+      {/* FAQ Section (Direkt UNTER dem Kontakt-Formular!) */}
+      <section className="py-24 bg-zinc-950 text-white border-b border-zinc-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-3">Häufige Fragen</span>
+            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">FAQ – FRAGEN & ANTWORTEN</h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className="bg-zinc-900/90 border border-zinc-800 rounded-2xl overflow-hidden transition-colors">
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base text-white hover:text-amber-400 transition-colors"
+                  >
+                    <span className="flex items-center gap-3">
+                      <HelpCircle className="w-5 h-5 text-amber-500 shrink-0" />
+                      <span>{faq.q}</span>
+                    </span>
+                    <ChevronDown className={`w-5 h-5 text-amber-500 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/60 pt-4">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
