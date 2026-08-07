@@ -76,8 +76,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <a href="#" className="flex items-center gap-3.5 group">
-              <div className="h-10 px-3 rounded-xl bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-lg shadow-[#c9a84c]/20 group-hover:border-[#c9a84c] group-hover:scale-105 transition-all overflow-hidden">
-                <img src={smokyLogo} alt="Smoky Headshop Horrem Original Schriftzug Logo" className="h-6 object-contain filter contrast-125 brightness-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+              <div className="px-3.5 py-1 rounded-xl bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-lg shadow-[#c9a84c]/20 group-hover:border-[#c9a84c] group-hover:scale-105 transition-all">
+                <span className="smoky-illuminated-text text-lg sm:text-xl tracking-widest">SMOKY</span>
               </div>
               <div>
                 <span className="font-heading text-base font-black uppercase text-white block leading-none tracking-tight">
@@ -141,8 +141,8 @@ export default function App() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl space-y-8">
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-black/90 backdrop-blur-md border border-[#c9a84c]/50 text-[#c9a84c] text-xs font-bold uppercase tracking-widest shadow-2xl">
-                <img src={smokyLogo} alt="Smoky Logo" className="h-4.5 object-contain filter contrast-125 brightness-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]" />
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-black/90 backdrop-blur-md border border-[#c9a84c]/50 text-[#c9a84c] text-xs font-bold uppercase tracking-widest shadow-2xl">
+                <span className="smoky-illuminated-text text-sm font-black tracking-widest">SMOKY</span>
                 <span className="text-[#c9a84c] font-black border-l border-stone-800 pl-2.5">Head&Shisha Shop Horrem</span>
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0b0b0e]/80 backdrop-blur-md border border-stone-800 text-zinc-300 text-xs font-bold uppercase tracking-wider">
@@ -453,7 +453,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
             <div className="space-y-4">
-              <div className="flex items-center gap-3"><div className="h-9 px-2.5 rounded-lg bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-md"><img src={smokyLogo} alt="Smoky Logo" className="h-5 object-contain filter contrast-125 brightness-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]" /></div><span className="font-heading text-lg font-black uppercase text-white tracking-tight">HEAD&SHISHA <span className="text-[#c9a84c]">HORREM</span></span></div>
+              <div className="flex items-center gap-3"><div className="px-3 py-1 rounded-lg bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-md"><span className="smoky-illuminated-text text-base tracking-widest">SMOKY</span></div><span className="font-heading text-lg font-black uppercase text-white tracking-tight">HEAD&SHISHA <span className="text-[#c9a84c]">HORREM</span></span></div>
               <p className="text-xs text-zinc-400 leading-relaxed">Der erste Head-&Shishashop im Rhein-Erft-Kreis – seit Feb. 2014 euer Fachgeschäft für Shishas, Tabak, Vapes & Headshop-Zubehör.</p>
               <div className="pt-2 flex items-center gap-2 text-[11px] text-[#c9a84c] font-bold bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-3 py-1.5 rounded-lg w-fit"><AlertCircle className="w-3.5 h-3.5 text-[#c9a84c] shrink-0" /><span>Jugendschutz: Abgabe nur ab 18 Jahren</span></div>
             </div>

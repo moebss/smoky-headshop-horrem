@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -23,6 +23,26 @@
     letter-spacing: -0.03em;
     text-wrap: balance;
   }
+}
+
+.font-sign {
+  font-family: 'Cinzel', serif;
+}
+
+/* ══════════════════════════════════════════════
+   AUTHENTIC ILLUMINATED STOREFRONT SIGN LOGO
+   Clean vector typography with white core & ambient gold neon glow
+   ══════════════════════════════════════════════ */
+.smoky-illuminated-text {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.14em;
+  text-shadow: 
+    0 0 4px rgba(255, 255, 255, 1),
+    0 0 12px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(201, 168, 76, 0.6),
+    0 0 45px rgba(201, 168, 76, 0.3);
 }
 
 .text-gold {
