@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Star, Flame, ShieldCheck, CheckCircle2, ArrowRight, X, ShoppingBag, Send, ChevronDown, HelpCircle, AlertCircle, Menu, XIcon, Users, Heart } from 'lucide-react';
+import { Phone, MapPin, Clock, Star, Flame, ShieldCheck, CheckCircle2, ArrowRight, X, ShoppingBag, Send, ChevronDown, HelpCircle, AlertCircle, Menu, XIcon, Users, Heart, ZoomIn, Camera } from 'lucide-react';
 
 import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
@@ -14,6 +14,7 @@ export default function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedGalleryImg, setSelectedGalleryImg] = useState<{ src: string; title: string; category: string; desc: string } | null>(null);
 
   const handleInlineSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +25,17 @@ export default function App() {
   const navLinks = [
     { label: 'Sortiment', href: '#products' },
     { label: 'Über uns', href: '#about' },
+    { label: 'Galerie', href: '#gallery' },
     { label: 'Bewertungen', href: '#reviews' },
     { label: 'Kontakt', href: '#contact-section' },
     { label: 'FAQ', href: '#faq' },
+  ];
+
+  const galleryItems = [
+    { src: heroShisha, title: "Premium Edelstahl Shishas", category: "Pfeifen & Setups", desc: "Hochwertige Edelstahl-Wasserpfeifen, Phunnels & HMDs im Ladenlokal Horrem." },
+    { src: tobaccoImg, title: "Tabak-Vitrinen & Bestseller", category: "Shisha-Tabak & Kohle", desc: "Über 100 Tabaksorten von A wie Al Fakher bis Z wie Zomo & 26mm Naturkohle." },
+    { src: vapesImg, title: "Vape & Liquid Lounge Bar", category: "Vapes & E-Zigaretten", desc: "Einweg- & Mehrweg-Vapes, Pod-Systeme (Elfbar, Lost Mary, Pod Salt) & Liquids." },
+    { src: headshopImg, title: "Headshop & Glaskunst", category: "Headshop Zubehör", desc: "Kräuter-Vaporizer, Präzisions-Grinder, Glasbongs, Aktivkohlefilter & Papers." },
   ];
 
   const faqs = [
@@ -292,8 +301,52 @@ export default function App() {
         </div>
       </section>
 
+      {/* ═══ BILDERGALERIE & SHOP-EINBLICKE (Neu & Interaktiv mit Lightbox) ═══ */}
+      <section id="gallery" className="py-24 bg-[#0b0b0e] border-b border-stone-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span className="text-[#c9a84c] font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+              <Camera className="w-4 h-4" />
+              <span>Einblicke & Impressionen</span>
+            </span>
+            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">
+              BILDERGALERIE <span className="text-[#c9a84c]">LADENLOKAL HORREM</span>
+            </h2>
+            <p className="text-zinc-400 text-sm sm:text-base">
+              Schau dich bei uns um – 75 m² voller Shisha-High-End Pfeifen, voller Tabakvitrinen und exklusivem Headshop-Zubehör in der Bahnhofstraße 20.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {galleryItems.map((item, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => setSelectedGalleryImg(item)}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer border border-stone-800 hover:border-[#c9a84c]/60 transition-all duration-500 shadow-xl aspect-[4/3] bg-[#131318]"
+              >
+                <img 
+                  src={item.src} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 filter contrast-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0e]/90 via-[#0b0b0e]/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+                
+                <div className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md border border-[#c9a84c]/40 text-[#c9a84c] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn className="w-4 h-4" />
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4 space-y-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#c9a84c] block">{item.category}</span>
+                  <h3 className="font-heading text-base font-bold text-white group-hover:text-[#c9a84c] transition-colors">{item.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ BEWERTUNGEN (Editorial Dark) ═══ */}
-      <section id="reviews" className="py-24 bg-[#0b0b0e] border-b border-stone-800/80">
+      <section id="reviews" className="py-24 bg-[#070709] border-b border-stone-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[#c9a84c] font-bold text-xs uppercase tracking-widest block mb-3">Community Urteil</span>
@@ -319,7 +372,7 @@ export default function App() {
       </section>
 
       {/* ═══ KONTAKT & FORMULAR (Editorial Dark) ═══ */}
-      <section id="contact-section" className="py-24 bg-[#070709] border-b border-stone-800/80">
+      <section id="contact-section" className="py-24 bg-[#0b0b0e] border-b border-stone-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[#c9a84c] font-bold text-xs uppercase tracking-widest block mb-3">Kontakt & Reservierung</span>
@@ -364,7 +417,7 @@ export default function App() {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section id="faq" className="py-24 bg-[#0b0b0e] border-b border-stone-800/80">
+      <section id="faq" className="py-24 bg-[#070709] border-b border-stone-800/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[#c9a84c] font-bold text-xs uppercase tracking-widest block mb-3">Häufige Fragen</span>
@@ -415,6 +468,25 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* ═══ LIGHTBOX MODAL FÜR GALERIE ═══ */}
+      {selectedGalleryImg && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md" onClick={() => setSelectedGalleryImg(null)}>
+          <div className="relative max-w-4xl w-full bg-[#131318] border border-[#c9a84c]/40 rounded-3xl overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setSelectedGalleryImg(null)} className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-zinc-300 hover:text-white border border-stone-800">
+              <X className="w-6 h-6" />
+            </button>
+            <div className="aspect-[16/10] overflow-hidden bg-black">
+              <img src={selectedGalleryImg.src} alt={selectedGalleryImg.title} className="w-full h-full object-cover" />
+            </div>
+            <div className="p-6 space-y-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">{selectedGalleryImg.category}</span>
+              <h3 className="font-heading text-2xl font-bold text-white">{selectedGalleryImg.title}</h3>
+              <p className="text-sm text-zinc-300">{selectedGalleryImg.desc}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ═══ MODALS ═══ */}
       {isContactOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-[#c9a84c]/30 rounded-2xl max-w-md w-full p-6 space-y-4"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Produkt-Anfrage</h3><button onClick={() => setIsContactOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><form onSubmit={(e) => { e.preventDefault(); alert('Vielen Dank!'); setIsContactOpen(false); }} className="space-y-3"><input type="text" required placeholder="Dein Name *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><input type="tel" required placeholder="Deine Telefonnummer *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><textarea placeholder="Welches Produkt möchtest du anfragen?" rows={3} className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider">Absenden</button></form></div></div>)}
