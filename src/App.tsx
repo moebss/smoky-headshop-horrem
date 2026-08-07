@@ -74,32 +74,35 @@ export default function App() {
 
         {/* Main Nav */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <a href="#" className="flex items-center gap-3.5 group">
-              <div className="px-3.5 py-1 rounded-xl bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-lg shadow-[#c9a84c]/20 group-hover:border-[#c9a84c] group-hover:scale-105 transition-all">
-                <span className="smoky-illuminated-text text-lg sm:text-xl tracking-widest">SMOKY</span>
+          <div className="flex items-center justify-between h-20 gap-4">
+            
+            {/* Logo Brand Area (mit klarem Abstand nach rechts) */}
+            <a href="#" className="flex items-center gap-3 shrink-0 mr-2 xl:mr-6 group">
+              <div className="px-3 py-1 rounded-xl bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-lg shadow-[#c9a84c]/20 group-hover:border-[#c9a84c] group-hover:scale-105 transition-all">
+                <span className="smoky-illuminated-text text-base sm:text-lg tracking-widest">SMOKY</span>
               </div>
-              <div>
-                <span className="font-heading text-base font-black uppercase text-white block leading-none tracking-tight">
+              <div className="hidden sm:block">
+                <span className="font-heading text-sm sm:text-base font-black uppercase text-white block leading-none tracking-tight whitespace-nowrap">
                   HEAD&SHISHA <span className="text-[#c9a84c]">SHOP</span>
                 </span>
-                <span className="text-[9px] text-[#c9a84c] font-extrabold uppercase tracking-widest block mt-0.5">Kerpen-Horrem • Seit 2014</span>
+                <span className="text-[9px] text-[#c9a84c] font-extrabold uppercase tracking-widest block mt-0.5 whitespace-nowrap">Kerpen-Horrem • Seit 2014</span>
               </div>
             </a>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* Desktop Navigation Links (mit zentriertem & ausgedehntem Abstand) */}
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6 justify-center flex-1 mx-2">
               {navLinks.map((l) => (
-                <a key={l.href} href={l.href} className="text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-[#c9a84c] transition-colors">{l.label}</a>
+                <a key={l.href} href={l.href} className="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-[#c9a84c] transition-colors whitespace-nowrap px-1 py-1">{l.label}</a>
               ))}
             </nav>
 
-            <div className="flex items-center gap-3">
-              <a href="tel:022739918823" className="hidden sm:inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 border border-stone-800 text-zinc-200 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all">
-                <Phone className="w-4 h-4 text-[#c9a84c]" />
+            {/* Right Action Buttons (mit klarem Abstand nach links) */}
+            <div className="flex items-center gap-3 shrink-0 ml-2 xl:ml-4">
+              <a href="tel:022739918823" className="hidden xl:inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 border border-stone-800 text-zinc-200 px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap">
+                <Phone className="w-3.5 h-3.5 text-[#c9a84c]" />
                 <span>02273 9918823</span>
               </a>
-              <a href="#contact-section" className="bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-[#c9a84c]/20 transition-all hover:-translate-y-0.5">
+              <a href="#contact-section" className="bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold px-4 sm:px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-[#c9a84c]/20 transition-all hover:-translate-y-0.5 whitespace-nowrap">
                 Produkte Reservieren
               </a>
               {/* Mobile Menu Button */}
