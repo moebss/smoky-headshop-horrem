@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Send, ChevronDown, HelpCircle } from 'lucide-react';
+import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Send, ChevronDown, HelpCircle, AlertCircle } from 'lucide-react';
 
 import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
@@ -521,16 +521,88 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-zinc-950 py-12 border-t border-zinc-900 text-xs text-zinc-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            © 2026 Smoky Head&Shisha Shop Horrem • Bahnhofstraße 20, 50169 Kerpen
+      {/* Rich 4-Column Full-Featured Footer */}
+      <footer className="bg-zinc-950 pt-16 pb-12 border-t border-zinc-900 text-zinc-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-zinc-900">
+            
+            {/* Column 1: Brand & Info */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-500 text-zinc-950 flex items-center justify-center font-black shadow-md">
+                  <Flame className="w-5 h-5 stroke-[2.5]" />
+                </div>
+                <span className="font-heading text-lg font-black uppercase text-white tracking-tight">
+                  SMOKY <span className="text-amber-500">HORREM</span>
+                </span>
+              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Dein Fachgeschäft für Shishas, Shisha-Tabak, Vapes & Headshop-Zubehör in Kerpen-Horrem. Originale Markenware & kompetente Beratung vor Ort.
+              </p>
+              <div className="pt-2 flex items-center gap-2 text-[11px] text-amber-400 font-bold bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg w-fit">
+                <AlertCircle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                <span>Jugendschutz: Abgabe nur an Personen ab 18 Jahren</span>
+              </div>
+            </div>
+
+            {/* Column 2: Quick Links & Assortment */}
+            <div className="space-y-3">
+              <h4 className="font-heading text-sm font-bold uppercase text-white tracking-wider">Sortiment & Shop</h4>
+              <ul className="space-y-2 text-xs">
+                <li><a href="#products" className="hover:text-amber-400 transition-colors">Edelstahl Shishas & Setups</a></li>
+                <li><a href="#products" className="hover:text-amber-400 transition-colors">Shisha Tabak & Kokoskohle</a></li>
+                <li><a href="#products" className="hover:text-amber-400 transition-colors">Einweg Vapes & Pods</a></li>
+                <li><a href="#products" className="hover:text-amber-400 transition-colors">Vaporizer & Headshop Zubehör</a></li>
+                <li><a href="#contact-section" className="hover:text-amber-400 transition-colors">Produkt-Reservierung</a></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Contact & Store Hours */}
+            <div className="space-y-3">
+              <h4 className="font-heading text-sm font-bold uppercase text-white tracking-wider">Ladenlokal Horrem</h4>
+              <div className="space-y-2 text-xs text-zinc-400">
+                <p className="flex items-center gap-2">
+                  <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                  <span>Bahnhofstraße 20, 50169 Kerpen</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                  <a href="tel:022739918823" className="hover:text-white font-bold text-amber-400">02273 9918823</a>
+                </p>
+                <p className="flex items-start gap-2 pt-1">
+                  <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+                  <span>
+                    Mo – Fr: 11:00 – 19:00 Uhr<br />
+                    Sa: 11:00 – 16:00 Uhr
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            {/* Column 4: Legal & Service */}
+            <div className="space-y-3">
+              <h4 className="font-heading text-sm font-bold uppercase text-white tracking-wider">Rechtliches</h4>
+              <ul className="space-y-2 text-xs">
+                <li><button onClick={() => setIsImpressumOpen(true)} className="hover:text-amber-400 transition-colors">Impressum</button></li>
+                <li><button onClick={() => setIsDatenschutzOpen(true)} className="hover:text-amber-400 transition-colors">Datenschutzerklärung</button></li>
+                <li><a href="#contact-section" className="hover:text-amber-400 transition-colors">Anfahrt & Kontakt</a></li>
+              </ul>
+            </div>
+
           </div>
-          <div className="flex items-center gap-6">
-            <button onClick={() => setIsImpressumOpen(true)} className="hover:text-amber-400 transition-colors">Impressum</button>
-            <button onClick={() => setIsDatenschutzOpen(true)} className="hover:text-amber-400 transition-colors">Datenschutz</button>
+
+          {/* Sub-Footer Bottom Bar */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-400 gap-4">
+            <div>
+              © 2026 Smoky Head&Shisha Shop Horrem • All Rights Reserved
+            </div>
+            <div className="flex items-center gap-6">
+              <button onClick={() => setIsImpressumOpen(true)} className="hover:text-amber-400 transition-colors">Impressum</button>
+              <button onClick={() => setIsDatenschutzOpen(true)} className="hover:text-amber-400 transition-colors">Datenschutz</button>
+            </div>
           </div>
+
         </div>
       </footer>
 
