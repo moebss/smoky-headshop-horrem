@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Send } from 'lucide-react';
+import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Send, ChevronDown, HelpCircle } from 'lucide-react';
 
 import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
@@ -11,6 +11,7 @@ export default function App() {
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'shisha' | 'vape' | 'headshop'>('all');
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleInlineSubmit = (e: React.FormEvent) => {
@@ -18,6 +19,25 @@ export default function App() {
     setFormSubmitted(true);
     setTimeout(() => setFormSubmitted(false), 5000);
   };
+
+  const faqs = [
+    {
+      q: "Verkauft ihr nur vor Ort im Laden oder kann man Produkte vorbestellen?",
+      a: "Du kannst all unsere Produkte direkt vor Ort in Kerpen-Horrem (Bahnhofstraße 20) kaufen oder bequem über unser Anfrageformular bzw. telefonisch unter 02273 9918823 vorbestellen und zur schnellen Abholung zurücklegen lassen."
+    },
+    {
+      q: "Welche Shisha-Tabaksorten und Kohlen habt ihr vorrätig?",
+      a: "Wir führen ständig die beliebtesten Bestseller-Marken wie Nameless (Black Nana), Holster, O’s Tobacco, 187 Strassenbande und Hookain sowie hochwertige 26mm Kokos-Naturkohle."
+    },
+    {
+      q: "Bietet ihr auch Vapes, Pod-Systeme & Liquids an?",
+      a: "Ja! Wir haben ein großes Sortiment an Einweg-Vapes, nachfüllbaren Pod-Systemen (u. a. Elfbar, Lost Mary, Pod Salt) sowie Liquids mit und ohne Nikotin."
+    },
+    {
+      q: "Helft ihr mir bei der Auswahl des richtigen Shisha-Setups oder Kopfes?",
+      a: "Absolut. Unser erfahrenes Team berät dich vor Ort persönlich zu Phunnel-Köpfen, HMDs (Heat Management Devices), Edelstahl-Pfeifen und der optimalen Hitzeregulierung."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-[#0b0b0e] text-zinc-100 selection:bg-amber-500 selection:text-zinc-950 font-['Plus_Jakarta_Sans',sans-serif]">
@@ -353,8 +373,43 @@ export default function App() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-3">Häufige Fragen</span>
+            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">FAQ – FRAGEN & ANTWORTEN</h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className="bg-zinc-900/90 border border-zinc-800 rounded-2xl overflow-hidden transition-colors">
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base text-white hover:text-amber-400 transition-colors"
+                  >
+                    <span className="flex items-center gap-3">
+                      <HelpCircle className="w-5 h-5 text-amber-500 shrink-0" />
+                      <span>{faq.q}</span>
+                    </span>
+                    <ChevronDown className={`w-5 h-5 text-amber-500 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6 text-sm text-zinc-300 leading-relaxed border-t border-zinc-800/60 pt-4">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Location & Permanent Inline Contact Form Section */}
-      <section id="contact-section" className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
+      <section id="contact-section" className="py-24 bg-zinc-950 text-white border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
