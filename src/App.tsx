@@ -5,6 +5,7 @@ import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
 import vapesImg from './images/vapes.jpg';
 import headshopImg from './images/headshop.jpg';
+import smokyLogo from './images/smoky_logo.png';
 
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function App() {
   ];
 
   const galleryItems = [
+    { src: smokyLogo, title: "Original Leuchtschriftzug Fassade", category: "Ladenlokal Horrem", desc: "Unser ikonischer Leuchtschriftzug vor Ort an der Bahnhofstraße 20 in Kerpen-Horrem." },
     { src: heroShisha, title: "Premium Edelstahl Shishas", category: "Pfeifen & Setups", desc: "Hochwertige Edelstahl-Wasserpfeifen, Phunnels & HMDs im Ladenlokal Horrem." },
     { src: tobaccoImg, title: "Tabak-Vitrinen & Bestseller", category: "Shisha-Tabak & Kohle", desc: "Über 100 Tabaksorten von A wie Al Fakher bis Z wie Zomo & 26mm Naturkohle." },
     { src: vapesImg, title: "Vape & Liquid Lounge Bar", category: "Vapes & E-Zigaretten", desc: "Einweg- & Mehrweg-Vapes, Pod-Systeme (Elfbar, Lost Mary, Pod Salt) & Liquids." },
@@ -73,13 +75,13 @@ export default function App() {
         {/* Main Nav */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#c9a84c] to-[#e8c872] text-black flex items-center justify-center shadow-lg shadow-[#c9a84c]/20 group-hover:scale-105 transition-transform">
-                <Flame className="w-5 h-5 stroke-[2.5]" />
+            <a href="#" className="flex items-center gap-3.5 group">
+              <div className="h-10 px-3 rounded-xl bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-lg shadow-[#c9a84c]/20 group-hover:border-[#c9a84c] group-hover:scale-105 transition-all overflow-hidden">
+                <img src={smokyLogo} alt="Smoky Headshop Horrem Original Schriftzug Logo" className="h-6 object-contain filter contrast-125 brightness-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
               </div>
               <div>
-                <span className="font-heading text-lg font-black uppercase text-white block leading-none tracking-tight">
-                  SMOKY <span className="text-[#c9a84c]">HEAD&SHISHA</span>
+                <span className="font-heading text-base font-black uppercase text-white block leading-none tracking-tight">
+                  HEAD&SHISHA <span className="text-[#c9a84c]">SHOP</span>
                 </span>
                 <span className="text-[9px] text-[#c9a84c] font-extrabold uppercase tracking-widest block mt-0.5">Kerpen-Horrem • Seit 2014</span>
               </div>
@@ -138,9 +140,15 @@ export default function App() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl space-y-8">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-lg bg-[#0b0b0e]/90 backdrop-blur-md border border-[#c9a84c]/40 text-[#c9a84c] text-xs font-bold uppercase tracking-widest shadow-2xl">
-              <ShieldCheck className="w-4 h-4 text-[#c9a84c]" />
-              <span>Smoky Head&Shisha Shop Horrem • Bahnhofstraße 20</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-black/90 backdrop-blur-md border border-[#c9a84c]/50 text-[#c9a84c] text-xs font-bold uppercase tracking-widest shadow-2xl">
+                <img src={smokyLogo} alt="Smoky Logo" className="h-4.5 object-contain filter contrast-125 brightness-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]" />
+                <span className="text-[#c9a84c] font-black border-l border-stone-800 pl-2.5">Head&Shisha Shop Horrem</span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0b0b0e]/80 backdrop-blur-md border border-stone-800 text-zinc-300 text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#c9a84c]" />
+                <span>Bahnhofstraße 20</span>
+              </div>
             </div>
 
             <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-[1.02] font-black drop-shadow-2xl">
@@ -445,7 +453,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
             <div className="space-y-4">
-              <div className="flex items-center gap-3"><div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#c9a84c] to-[#e8c872] text-black flex items-center justify-center shadow-md"><Flame className="w-5 h-5 stroke-[2.5]" /></div><span className="font-heading text-lg font-black uppercase text-white tracking-tight">SMOKY <span className="text-[#c9a84c]">HORREM</span></span></div>
+              <div className="flex items-center gap-3"><div className="h-9 px-2.5 rounded-lg bg-black border border-[#c9a84c]/40 flex items-center justify-center shadow-md"><img src={smokyLogo} alt="Smoky Logo" className="h-5 object-contain filter contrast-125 brightness-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.7)]" /></div><span className="font-heading text-lg font-black uppercase text-white tracking-tight">HEAD&SHISHA <span className="text-[#c9a84c]">HORREM</span></span></div>
               <p className="text-xs text-zinc-400 leading-relaxed">Der erste Head-&Shishashop im Rhein-Erft-Kreis – seit Feb. 2014 euer Fachgeschäft für Shishas, Tabak, Vapes & Headshop-Zubehör.</p>
               <div className="pt-2 flex items-center gap-2 text-[11px] text-[#c9a84c] font-bold bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-3 py-1.5 rounded-lg w-fit"><AlertCircle className="w-3.5 h-3.5 text-[#c9a84c] shrink-0" /><span>Jugendschutz: Abgabe nur ab 18 Jahren</span></div>
             </div>
