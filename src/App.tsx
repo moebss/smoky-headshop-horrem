@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Tag } from 'lucide-react';
+import { Phone, MapPin, Clock, Star, Flame, Sparkles, ShieldCheck, CheckCircle2, ArrowRight, X, Compass, ShoppingBag, Zap, Award, Send } from 'lucide-react';
 
 import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
@@ -11,6 +11,13 @@ export default function App() {
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'shisha' | 'vape' | 'headshop'>('all');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const handleInlineSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+    setTimeout(() => setFormSubmitted(false), 5000);
+  };
 
   return (
     <div className="min-h-screen bg-[#0b0b0e] text-zinc-100 selection:bg-amber-500 selection:text-zinc-950 font-['Plus_Jakarta_Sans',sans-serif]">
@@ -76,7 +83,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero Section (Echtes Shisha-Foto im Hero!) */}
+      {/* Hero Section */}
       <section className="relative py-20 lg:py-28 bg-smoke-atmosphere border-b border-zinc-800 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-12 items-center">
@@ -116,14 +123,14 @@ export default function App() {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                <button
-                  onClick={() => setIsContactOpen(true)}
+                <a
+                  href="#contact-section"
                   className="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold px-8 py-4 rounded-xl text-xs uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-3 group"
                 >
                   <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
-                  <span>Sortiment & Vorbestellung</span>
+                  <span>Anfrage & Reservierung</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
 
                 <a
                   href="tel:022739918823"
@@ -148,7 +155,7 @@ export default function App() {
 
             </div>
 
-            {/* Right Hero Image (Echtes Studio-Shisha Bild!) */}
+            {/* Right Hero Image */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
                 <div className="relative rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-900 aspect-[4/5]">
@@ -202,7 +209,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Real Product Showcase Section with Authentic Images */}
+      {/* Real Product Showcase Section */}
       <section id="products" className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -291,13 +298,13 @@ export default function App() {
                 </div>
 
                 <div className="p-6 pt-0">
-                  <button
-                    onClick={() => setIsContactOpen(true)}
+                  <a
+                    href="#contact-section"
                     className="w-full bg-zinc-900 hover:bg-amber-500 text-zinc-200 hover:text-zinc-950 border border-zinc-800 hover:border-amber-500 font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider"
                   >
                     <span>Im Laden Anfragen</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -346,15 +353,22 @@ export default function App() {
         </div>
       </section>
 
-      {/* Location & Opening Hours */}
-      <section className="py-20 bg-[#0b0b0e] text-white border-b border-zinc-900">
+      {/* Location & Permanent Inline Contact Form Section */}
+      <section id="contact-section" className="py-24 bg-[#0b0b0e] text-white border-b border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center bg-zinc-900/90 border border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-2xl">
-            <div className="space-y-6">
-              <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block">Besuche Uns Vor Ort</span>
-              <h3 className="font-heading text-3xl sm:text-4xl font-black text-white uppercase">SMOKY HEAD&SHISHA SHOP</h3>
-              
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-amber-500 font-bold text-xs uppercase tracking-widest block mb-3">Kontakt & Reservierung</span>
+            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">SCHREIB UNS ODER BESUCHE UNS IN HORREM</h2>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+            
+            {/* Left: Contact Info & Map */}
+            <div className="lg:col-span-6 space-y-8 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-8 shadow-2xl">
               <div className="space-y-4 text-sm text-zinc-300">
+                <h3 className="font-heading text-2xl font-black text-white uppercase mb-4">SMOKY HEAD&SHISHA SHOP</h3>
+                
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-amber-500 shrink-0 mt-1" />
                   <div>
@@ -367,7 +381,7 @@ export default function App() {
                   <Phone className="w-5 h-5 text-amber-500 shrink-0 mt-1" />
                   <div>
                     <strong className="text-white block">Telefon:</strong>
-                    <a href="tel:022739918823" className="hover:text-amber-400 font-bold">02273 9918823</a>
+                    <a href="tel:022739918823" className="hover:text-amber-400 font-bold text-amber-400">02273 9918823</a>
                   </div>
                 </div>
 
@@ -380,17 +394,75 @@ export default function App() {
                   </div>
                 </div>
               </div>
+
+              <div className="rounded-2xl overflow-hidden border border-zinc-800 aspect-[16/9] bg-zinc-950">
+                <iframe
+                  title="Smoky Headshop Horrem Map"
+                  src="https://maps.google.com/maps?q=Bahnhofstraße%2020%2C%2050169%20Kerpen-Horrem&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0 grayscale contrast-125 opacity-85"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/3] bg-zinc-950">
-              <iframe
-                title="Smoky Headshop Horrem Map"
-                src="https://maps.google.com/maps?q=Bahnhofstraße%2020%2C%2050169%20Kerpen-Horrem&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                className="w-full h-full border-0 grayscale contrast-125 opacity-85"
-                loading="lazy"
-              />
+            {/* Right: Permanent Inline Contact & Reservation Form */}
+            <div className="lg:col-span-6 bg-zinc-900/90 border border-zinc-800 rounded-3xl p-8 shadow-2xl">
+              <h3 className="font-heading text-2xl font-black text-white uppercase mb-2">PRODUKT ANFRAGEN ODER RESERVIEREN</h3>
+              <p className="text-xs text-zinc-400 mb-6">
+                Du suchst einen bestimmten Tabak, ein Shisha-Modell oder Vape-Flavors? Schick uns deine Anfrage – wir legen es dir direkt zur Abholung bereit!
+              </p>
+
+              {formSubmitted ? (
+                <div className="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-center space-y-2">
+                  <CheckCircle2 className="w-10 h-10 text-amber-500 mx-auto" />
+                  <h4 className="font-bold text-white text-base">Vielen Dank für deine Anfrage!</h4>
+                  <p className="text-xs text-zinc-300">Wir prüfen deine Produktanfrage und melden uns kurzfristig bei dir.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleInlineSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-1">Dein Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="z. B. Alex Müller"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-xs text-white focus:border-amber-500 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-1">Telefon / WhatsApp *</label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="z. B. 0170 1234567"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-xs text-white focus:border-amber-500 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-1">Gewünschte Produkte / Nachricht *</label>
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="Welchen Tabak, welche Shisha oder Vapes möchtest du anfragen?"
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-xs text-white focus:border-amber-500 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Produkt-Anfrage Absenden</span>
+                  </button>
+                </form>
+              )}
             </div>
+
           </div>
+
         </div>
       </section>
 
@@ -407,7 +479,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Contact Modal */}
+      {/* Modal Form */}
       {isContactOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-md">
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-md w-full p-6 space-y-4">
