@@ -103,102 +103,89 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 bg-smoke-atmosphere border-b border-zinc-800 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+      {/* Full-Bleed Immersive Hero Section mit echtem Shisha-Hintergrundbild */}
+      <section className="relative min-h-[85vh] flex items-center justify-center border-b border-zinc-800 overflow-hidden py-24">
+        
+        {/* Full-Screen Shisha Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroShisha}
+            alt="Smoky Headshop Horrem Edelstahl Shisha Pfeife"
+            className="w-full h-full object-cover object-center scale-105 filter contrast-110 brightness-75"
+          />
+          {/* Dark Smoke Ambient Overlay Gradients */}
+          <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-zinc-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/80" />
+          <div className="absolute inset-0 bg-amber-500/10 mix-blend-overlay" />
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-3xl space-y-8">
             
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-8">
-              
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-lg bg-zinc-900 border border-amber-500/40 text-amber-400 text-xs font-bold uppercase tracking-widest shadow-xl">
-                <ShieldCheck className="w-4 h-4 text-amber-500" />
-                <span>Einer der bestbewerteten Shisha & Headshops im Erftkreis</span>
-              </div>
-
-              <h1 className="font-heading text-4.5xl sm:text-6xl lg:text-7xl uppercase tracking-tight text-white leading-[1.02] font-black">
-                DEIN SHISHA & <br />
-                <span className="text-amber-500">HEADSHOP IN HORREM.</span>
-              </h1>
-
-              <p className="text-zinc-200 text-lg sm:text-xl font-normal leading-relaxed max-w-2xl">
-                Riesige Auswahl an Edelstahl-Shishas, Phunnels, Shisha-Tabak der Top-Marken, 26mm Naturkohle, E-Zigaretten & Vapes sowie professionellem Headshop-Zubehör direkt vor Ort in Kerpen-Horrem.
-              </p>
-
-              {/* High-Contrast Feature Badges */}
-              <div className="grid sm:grid-cols-3 gap-3.5 pt-2">
-                <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 border-l-4 border-l-amber-500">
-                  <span className="text-xs font-bold text-amber-400 block mb-1">100% Originale</span>
-                  <span className="text-sm font-bold text-white">Top-Marken & Tabak</span>
-                </div>
-                <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 border-l-4 border-l-amber-500">
-                  <span className="text-xs font-bold text-amber-400 block mb-1">Echte Beratung</span>
-                  <span className="text-sm font-bold text-white">Kopf- & Setups-Tipps</span>
-                </div>
-                <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 border-l-4 border-l-amber-500">
-                  <span className="text-xs font-bold text-amber-400 block mb-1">Zentral gelegen</span>
-                  <span className="text-sm font-bold text-white">Bahnhofstraße 20</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                <a
-                  href="#contact-section"
-                  className="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold px-8 py-4 rounded-xl text-xs uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-3 group"
-                >
-                  <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
-                  <span>Anfrage & Reservierung</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
-
-                <a
-                  href="tel:022739918823"
-                  className="bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white font-bold px-7 py-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all hover:border-amber-500/50"
-                >
-                  <Phone className="w-4 h-4 text-amber-500" />
-                  <span>02273 9918823 Anrufen</span>
-                </a>
-              </div>
-
-              {/* Review Strip */}
-              <div className="pt-4 border-t border-zinc-800/80 flex items-center gap-4">
-                <div className="flex text-amber-500">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
-                  ))}
-                </div>
-                <span className="text-xs text-zinc-300 font-semibold">
-                  <strong className="text-white">4.6 / 5.0 Sterne</strong> aus 120+ Google-Bewertungen in Kerpen-Horrem
-                </span>
-              </div>
-
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-lg bg-zinc-950/80 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold uppercase tracking-widest shadow-2xl">
+              <ShieldCheck className="w-4 h-4 text-amber-500" />
+              <span>Smoky Head&Shisha Shop Horrem • Bahnhofstraße 20</span>
             </div>
 
-            {/* Right Hero Image */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="relative rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-900 aspect-[4/5]">
-                  <img
-                    src={heroShisha}
-                    alt="Smoky Headshop Horrem Shisha Pfeife"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
-                  
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-zinc-950/95 backdrop-blur-md border border-zinc-800 flex items-center justify-between shadow-2xl">
-                    <div>
-                      <span className="text-xs text-amber-400 font-extrabold uppercase tracking-wider block">
-                        Smoky Head&Shisha Shop
-                      </span>
-                      <span className="text-sm font-bold text-white">
-                        Bahnhofstraße 20, 50169 Horrem
-                      </span>
-                    </div>
-                    <CheckCircle2 className="w-8 h-8 text-amber-500 shrink-0" />
-                  </div>
-                </div>
+            {/* Custom Requested Slogan Headline */}
+            <h1 className="font-heading text-4.5xl sm:text-6xl lg:text-7.5xl uppercase tracking-tight text-white leading-[1.02] font-black drop-shadow-2xl">
+              KEINEN KOPF MACHEN, <br />
+              <span className="text-amber-500 drop-shadow-[0_10px_20px_rgba(245,158,11,0.4)]">
+                ERSTMAL NOCH 'NEN KOPF MACHEN.
+              </span>
+            </h1>
+
+            <p className="text-zinc-200 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl drop-shadow-md">
+              Deine Top-Adresse in Kerpen-Horrem für Premium Edelstahl-Shishas, Phunnels, Tabak-Bestseller, 26mm Naturkohle, Einweg/Mehrweg Vapes & Headshop-Zubehör.
+            </p>
+
+            {/* Feature Badges */}
+            <div className="grid sm:grid-cols-3 gap-3.5 pt-2">
+              <div className="p-4 rounded-xl bg-zinc-950/80 backdrop-blur-md border border-zinc-800 border-l-4 border-l-amber-500">
+                <span className="text-xs font-bold text-amber-400 block mb-1">100% Originale</span>
+                <span className="text-sm font-bold text-white">Top-Marken & Tabak</span>
               </div>
+              <div className="p-4 rounded-xl bg-zinc-950/80 backdrop-blur-md border border-zinc-800 border-l-4 border-l-amber-500">
+                <span className="text-xs font-bold text-amber-400 block mb-1">Echte Beratung</span>
+                <span className="text-sm font-bold text-white">Kopf- & Setups-Tipps</span>
+              </div>
+              <div className="p-4 rounded-xl bg-zinc-950/80 backdrop-blur-md border border-zinc-800 border-l-4 border-l-amber-500">
+                <span className="text-xs font-bold text-amber-400 block mb-1">Zentral gelegen</span>
+                <span className="text-sm font-bold text-white">Bahnhofstraße 20</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a
+                href="#contact-section"
+                className="bg-amber-500 hover:bg-amber-400 text-zinc-950 font-extrabold px-8 py-4 rounded-xl text-xs uppercase tracking-wider shadow-2xl shadow-amber-500/30 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-3 group"
+              >
+                <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
+                <span>Produkt-Anfrage & Reservierung</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+
+              <a
+                href="tel:022739918823"
+                className="bg-zinc-950/90 hover:bg-zinc-900 border border-zinc-700 text-white font-bold px-7 py-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all hover:border-amber-500/50 backdrop-blur-md"
+              >
+                <Phone className="w-4 h-4 text-amber-500" />
+                <span>02273 9918823 Anrufen</span>
+              </a>
+            </div>
+
+            {/* Review Strip */}
+            <div className="pt-4 border-t border-zinc-800/80 flex items-center gap-4">
+              <div className="flex text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                ))}
+              </div>
+              <span className="text-xs text-zinc-300 font-semibold">
+                <strong className="text-white">4.6 / 5.0 Sterne</strong> aus 120+ Google-Bewertungen in Kerpen-Horrem
+              </span>
             </div>
 
           </div>
