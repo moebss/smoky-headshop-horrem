@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-gold: #c9a84c;
+  --color-gold-hover: #b8963d;
+  --color-gold-light: #dfc476;
+  --color-editorial-dark: #0b0b0e;
+  --color-editorial-card: #131318;
+}
+
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #fafaf9;
-    color: #1c1917;
+    background-color: #0b0b0e;
+    color: #e4e4e7;
     text-wrap: pretty;
   }
 
@@ -17,21 +25,33 @@
   }
 }
 
+.text-gold {
+  color: #c9a84c;
+}
+
+.bg-gold {
+  background-color: #c9a84c;
+}
+
+.border-gold {
+  border-color: #c9a84c;
+}
+
 .product-card {
-  background: #ffffff;
-  border: 1px solid rgba(214, 211, 209, 0.8);
-  box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  background: #131318;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-  border-color: rgba(217, 119, 6, 0.5);
-  box-shadow: 0 16px 40px -12px rgba(217, 119, 6, 0.15), 0 0 0 1px rgba(217, 119, 6, 0.2) inset;
+  border-color: rgba(201, 168, 76, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(201, 168, 76, 0.25), 0 0 0 1px rgba(201, 168, 76, 0.3) inset;
   transform: translateY(-3px);
 }
 
 /* ══════════════════════════════════════════════
-   SHISHA SMOKE ANIMATION SYSTEM
+   SHISHA SMOKE ANIMATION SYSTEM (SmokeFactory Gold Edition)
    ══════════════════════════════════════════════ */
 
 .smoke-container {
@@ -65,7 +85,7 @@
   position: absolute;
   bottom: -5%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.05) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.18), rgba(201, 168, 76, 0.05) 50%, transparent 70%);
   filter: blur(40px);
   animation: smokeRise linear infinite;
   will-change: transform, opacity;
@@ -90,7 +110,7 @@
   transform: translateX(-50%);
   width: 60%;
   height: 200px;
-  background: radial-gradient(ellipse at center bottom, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.08) 40%, transparent 70%);
+  background: radial-gradient(ellipse at center bottom, rgba(201, 168, 76, 0.25), rgba(217, 119, 6, 0.1) 40%, transparent 70%);
   filter: blur(60px);
   animation: emberPulse 4s ease-in-out infinite alternate;
   pointer-events: none;
