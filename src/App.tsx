@@ -96,18 +96,18 @@ export default function App() {
               ))}
             </nav>
 
-            {/* Right Action Buttons (mit klarem Abstand nach links) */}
-            <div className="flex items-center gap-3 shrink-0 ml-2 xl:ml-4">
+            {/* Right Action Buttons */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-1 xl:ml-4">
               <a href="tel:022739918823" className="hidden xl:inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 border border-stone-800 text-zinc-200 px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap">
                 <Phone className="w-3.5 h-3.5 text-[#c9a84c]" />
                 <span>02273 9918823</span>
               </a>
-              <a href="#contact-section" className="bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold px-4 sm:px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-[#c9a84c]/20 transition-all hover:-translate-y-0.5 whitespace-nowrap">
+              <a href="#contact-section" className="hidden sm:inline-flex bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold px-4 sm:px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-[#c9a84c]/20 transition-all hover:-translate-y-0.5 whitespace-nowrap">
                 Produkte Reservieren
               </a>
               {/* Mobile Menu Button */}
-              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 text-zinc-300">
-                {mobileMenuOpen ? <XIcon className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 text-zinc-300 hover:text-white rounded-lg bg-stone-900 border border-stone-800">
+                {mobileMenuOpen ? <XIcon className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
@@ -452,7 +452,7 @@ export default function App() {
       </section>
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="bg-[#070709] pt-16 pb-12 text-zinc-400 border-t border-stone-800">
+      <footer className="bg-[#070709] pt-16 pb-24 lg:pb-12 text-zinc-400 border-t border-stone-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
             <div className="space-y-4">
@@ -503,6 +503,18 @@ export default function App() {
       {isContactOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-[#c9a84c]/30 rounded-2xl max-w-md w-full p-6 space-y-4"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Produkt-Anfrage</h3><button onClick={() => setIsContactOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><form onSubmit={(e) => { e.preventDefault(); alert('Vielen Dank!'); setIsContactOpen(false); }} className="space-y-3"><input type="text" required placeholder="Dein Name *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><input type="tel" required placeholder="Deine Telefonnummer *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><textarea placeholder="Welches Produkt möchtest du anfragen?" rows={3} className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider">Absenden</button></form></div></div>)}
       {isImpressumOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Impressum</h3><button onClick={() => setIsImpressumOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><p><strong>Smoky Head&Shisha Shop Horrem</strong><br />Bahnhofstraße 20<br />50169 Kerpen-Horrem<br />Telefon: 02273 9918823</p></div></div>)}
       {isDatenschutzOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Datenschutzerklärung</h3><button onClick={() => setIsDatenschutzOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><p>Verantwortlicher: Smoky Head&Shisha Shop Horrem. Wir erheben Daten ausschließlich zur Bearbeitung deiner Anfrage.</p></div></div>)}
+
+      {/* ═══ MOBILE STICKY BOTTOM ACTION BAR (1-Tap Call & Reserve) ═══ */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#070709]/95 backdrop-blur-lg p-3 border-t border-stone-800 flex items-center justify-between gap-3 lg:hidden shadow-2xl">
+        <a href="tel:022739918823" className="flex-1 bg-stone-900 hover:bg-stone-800 border border-stone-700 text-white font-bold py-3 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+          <Phone className="w-4 h-4 text-[#c9a84c]" />
+          <span>Anrufen</span>
+        </a>
+        <a href="#contact-section" className="flex-1 bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#c9a84c]/20">
+          <ShoppingBag className="w-4 h-4" />
+          <span>Reservieren</span>
+        </a>
+      </div>
     </div>
   );
 }
