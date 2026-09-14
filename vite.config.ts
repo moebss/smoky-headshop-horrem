@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/smoky-headshop-horrem/',
+  base: '/',
   server: {
     port: 3060,
     host: true
