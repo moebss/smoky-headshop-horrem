@@ -518,7 +518,30 @@ export default function App() {
 
       {/* ═══ MODALS ═══ */}
       {isContactOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-[#c9a84c]/30 rounded-2xl max-w-md w-full p-6 space-y-4"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Produkt-Anfrage</h3><button onClick={() => setIsContactOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><form onSubmit={(e) => { e.preventDefault(); alert('Vielen Dank!'); setIsContactOpen(false); }} className="space-y-3"><input type="text" required placeholder="Dein Name *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><input type="tel" required placeholder="Deine Telefonnummer *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><textarea placeholder="Welches Produkt möchtest du anfragen?" rows={3} className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider">Absenden</button></form></div></div>)}
-      {isImpressumOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Impressum</h3><button onClick={() => setIsImpressumOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><p><strong>Smoky Head&Shisha Shop Horrem</strong><br />Bahnhofstraße 20<br />50169 Kerpen-Horrem<br />Telefon: 02273 9918823</p></div></div>)}
+      {isImpressumOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+          <div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300">
+            <div className="flex justify-between items-center border-b border-stone-800 pb-3">
+              <h3 className="font-heading text-lg font-bold text-white">Impressum</h3>
+              <button onClick={() => setIsImpressumOpen(false)} className="text-zinc-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <p>
+              <strong>Smoky Head&Shisha Shop Horrem</strong><br />
+              Bahnhofstraße 20<br />
+              50169 Kerpen-Horrem<br />
+              Telefon: 02273 9918823
+            </p>
+            <div className="pt-3 border-t border-stone-800 space-y-1">
+              <p className="font-bold text-white">Bildnachweise & Hinweis zu KI-Inhalten:</p>
+              <p className="text-zinc-400">
+                Die auf dieser Website verwendeten Bild- und Fotodarstellungen (unter anderem im Header-Bereich und in der Produktgalerie) sind symbolische Darstellungen, die ganz oder teilweise unter Zuhilfenahme künstlicher Intelligenz (KI) generiert oder digital bearbeitet wurden.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       {isDatenschutzOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Datenschutzerklärung</h3><button onClick={() => setIsDatenschutzOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><p>Verantwortlicher: Smoky Head&Shisha Shop Horrem. Wir erheben Daten ausschließlich zur Bearbeitung deiner Anfrage.</p></div></div>)}
 
       {/* ═══ MOBILE STICKY BOTTOM ACTION BAR (1-Tap Call & Reserve) ═══ */}
