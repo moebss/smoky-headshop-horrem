@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Facebook, Star, Flame, ShieldCheck, CheckCircle2, ArrowRight, X, ShoppingBag, Send, ChevronDown, HelpCircle, AlertCircle, Menu, XIcon, Users, Heart, ZoomIn, Camera } from 'lucide-react';
+import { Phone, MapPin, Clock, Facebook, Star, Flame, ShieldCheck, CheckCircle2, ArrowRight, X, ShoppingBag, Send, ChevronDown, HelpCircle, AlertCircle, Menu, XIcon, Users, Heart, ZoomIn, Camera, Scale, Lock } from 'lucide-react';
 
 import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
@@ -519,30 +519,226 @@ export default function App() {
       {/* ═══ MODALS ═══ */}
       {isContactOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-[#c9a84c]/30 rounded-2xl max-w-md w-full p-6 space-y-4"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Produkt-Anfrage</h3><button onClick={() => setIsContactOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><form onSubmit={(e) => { e.preventDefault(); alert('Vielen Dank!'); setIsContactOpen(false); }} className="space-y-3"><input type="text" required placeholder="Dein Name *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><input type="tel" required placeholder="Deine Telefonnummer *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><textarea placeholder="Welches Produkt möchtest du anfragen?" rows={3} className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider">Absenden</button></form></div></div>)}
       {isImpressumOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300">
-            <div className="flex justify-between items-center border-b border-stone-800 pb-3">
-              <h3 className="font-heading text-lg font-bold text-white">Impressum</h3>
-              <button onClick={() => setIsImpressumOpen(false)} className="text-zinc-400 hover:text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative max-w-2xl w-full max-h-[85vh] bg-[#111115] border border-[#c9a84c]/40 rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-stone-800 bg-[#0d0d10]">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-[#c9a84c]/10 text-[#c9a84c] border border-[#c9a84c]/30">
+                  <Scale className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white leading-tight">
+                    Impressum
+                  </h3>
+                  <span className="text-[11px] text-[#c9a84c] font-medium">
+                    Angaben gemäß § 5 DDG & § 18 MStV
+                  </span>
+                </div>
+              </div>
+              <button 
+                onClick={() => setIsImpressumOpen(false)} 
+                className="p-2 text-zinc-400 hover:text-white hover:bg-stone-800 rounded-full transition-colors cursor-pointer"
+                aria-label="Schließen"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <p>
-              <strong>Smoky Head&Shisha Shop Horrem</strong><br />
-              Bahnhofstraße 20<br />
-              50169 Kerpen-Horrem<br />
-              Telefon: 02273 9918823
-            </p>
-            <div className="pt-3 border-t border-stone-800 space-y-1">
-              <p className="font-bold text-white">Bildnachweise & Hinweis zu KI-Inhalten:</p>
-              <p className="text-zinc-400">
-                Die auf dieser Website verwendeten Bild- und Fotodarstellungen (unter anderem im Header-Bereich und in der Produktgalerie) sind symbolische Darstellungen, die ganz oder teilweise unter Zuhilfenahme künstlicher Intelligenz (KI) generiert oder digital bearbeitet wurden.
-              </p>
+
+            {/* Scrollable Content */}
+            <div className="p-5 sm:p-6 overflow-y-auto space-y-5 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+              <section className="space-y-1.5 bg-stone-900/60 p-4 rounded-xl border border-stone-800">
+                <h4 className="font-heading font-bold text-white text-sm uppercase tracking-wider text-[#c9a84c]">
+                  Diensteanbieter & Ladenlokal
+                </h4>
+                <p className="font-bold text-white text-base">Smoky Head&Shisha Shop Horrem</p>
+                <p>Bahnhofstraße 20<br />50169 Kerpen-Horrem<br />Deutschland</p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">Kontaktmöglichkeiten</h4>
+                <p>
+                  Telefon: <a href="tel:022739918823" className="text-[#c9a84c] font-bold hover:underline">02273 9918823</a><br />
+                  E-Mail: <a href="mailto:smoky-headshop@t-online.de" className="text-[#c9a84c] font-bold hover:underline">smoky-headshop@t-online.de</a><br />
+                  Webseite: <a href="https://smoky-headshop.de" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] hover:underline">https://smoky-headshop.de</a>
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">Verantwortlich für redaktionelle Inhalte</h4>
+                <p>Gemäß § 18 Abs. 2 MStV:<br />Smoky Head&Shisha Shop Horrem, Bahnhofstraße 20, 50169 Kerpen-Horrem</p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">Umsatzsteuer</h4>
+                <p className="text-zinc-400">
+                  Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: Wird auf Anfrage mitgeteilt (Kleinunternehmerregelung gem. § 19 UStG bzw. Einzelunternehmen).
+                </p>
+              </section>
+
+              <section className="space-y-1.5 bg-[#c9a84c]/5 p-3.5 rounded-xl border border-[#c9a84c]/20">
+                <h4 className="font-heading font-bold text-[#c9a84c] text-sm">Hinweis zum Jugendschutz (§ 10 JuSchG)</h4>
+                <p className="text-zinc-300 text-xs">
+                  Der Erwerb von Tabakwaren, Wasserpfeifentabak, E-Zigaretten/Vapes, Liquiden sowie nikotinhaltigen und nikotinfreien Erzeugnissen ist ausschließlich Personen ab dem vollendeten 18. Lebensjahr gestattet. Im Ladenlokal führen wir vor der Abgabe eine strikte Altersprüfung (Ausweiskontrolle) durch.
+                </p>
+              </section>
+
+              <section className="space-y-1.5 bg-stone-900/60 p-3.5 rounded-xl border border-stone-800">
+                <h4 className="font-heading font-bold text-white text-sm">Bildnachweise & Hinweis zu KI-Inhalten</h4>
+                <p className="text-zinc-300 text-xs">
+                  Die auf dieser Website gezeigten Bild- und Produktillustrationen (u.&nbsp;a. im Hero-Banner, in den Sortimentskarten und der interaktiven Galerie) dienen der symbolischen Veranschaulichung unseres Sortiments. Sie wurden zum Teil unter Zuhilfenahme generativer künstlicher Intelligenz (KI) erstellt oder digital nachbearbeitet.
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">Online-Streitbeilegung & Verbraucherschlichtung</h4>
+                <p className="text-zinc-400 text-xs">
+                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}
+                  <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] underline">
+                    https://ec.europa.eu/consumers/odr/
+                  </a>.<br />
+                  Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">Haftung für Inhalte & Links</h4>
+                <p className="text-zinc-400 text-xs">
+                  Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Für Inhalte externer Websites Dritter, auf die wir verlinken, übernehmen wir keine Gewähr; für diese ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+                </p>
+              </section>
+            </div>
+
+            {/* Footer */}
+            <div className="p-3 sm:p-4 border-t border-stone-800 bg-[#0d0d10] flex justify-end">
+              <button 
+                onClick={() => setIsImpressumOpen(false)}
+                className="bg-[#c9a84c] hover:bg-[#b8963d] text-zinc-950 font-bold px-5 py-2 rounded-xl text-xs uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                Schließen
+              </button>
             </div>
           </div>
         </div>
       )}
-      {isDatenschutzOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-stone-800 rounded-2xl max-w-lg w-full p-6 space-y-4 text-xs text-zinc-300"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Datenschutzerklärung</h3><button onClick={() => setIsDatenschutzOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><p>Verantwortlicher: Smoky Head&Shisha Shop Horrem. Wir erheben Daten ausschließlich zur Bearbeitung deiner Anfrage.</p></div></div>)}
+      {isDatenschutzOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative max-w-2xl w-full max-h-[85vh] bg-[#111115] border border-[#c9a84c]/40 rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-stone-800 bg-[#0d0d10]">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-[#c9a84c]/10 text-[#c9a84c] border border-[#c9a84c]/30">
+                  <Lock className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-white leading-tight">
+                    Datenschutzerklärung
+                  </h3>
+                  <span className="text-[11px] text-[#c9a84c] font-medium">
+                    DSGVO & TDDDG • Stand 2026
+                  </span>
+                </div>
+              </div>
+              <button 
+                onClick={() => setIsDatenschutzOpen(false)} 
+                className="p-2 text-zinc-400 hover:text-white hover:bg-stone-800 rounded-full transition-colors cursor-pointer"
+                aria-label="Schließen"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Content */}
+            <div className="p-5 sm:p-6 overflow-y-auto space-y-5 text-xs sm:text-sm text-zinc-300 leading-relaxed">
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm uppercase tracking-wider text-[#c9a84c]">
+                  1. Datenschutz auf einen Blick
+                </h4>
+                <p>
+                  Die folgenden Hinweise geben einen verständlichen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+                </p>
+              </section>
+
+              <section className="space-y-1.5 bg-stone-900/60 p-4 rounded-xl border border-stone-800">
+                <h4 className="font-heading font-bold text-white text-sm">2. Verantwortliche Stelle</h4>
+                <p className="font-bold text-white">Smoky Head&Shisha Shop Horrem</p>
+                <p>
+                  Bahnhofstraße 20<br />
+                  50169 Kerpen-Horrem<br />
+                  Telefon: 02273 9918823<br />
+                  E-Mail: smoky-headshop@t-online.de
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">3. Hosting & Bereitstellung der Website</h4>
+                <p>
+                  Diese Website wird als statische Webanwendung auf Servern von <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet.
+                </p>
+                <p className="text-zinc-400 text-xs">
+                  Beim Aufruf der Website erfasst der Webserver automatisch technische Informationen in sogenannten <strong>Server-Log-Dateien</strong> (u.&nbsp;a. Browsertyp/-version, Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage und IP-Adresse). Die Erfassung erfolgt auf Grundlage unseres berechtigten Interesses an einer sicheren, stabilen und fehlerfreien Bereitstellung unseres Internetauftritts (Art. 6 Abs. 1 lit. f DSGVO). Die Datenübermittlung in die USA wird durch Standardvertragsklauseln (SCC) der EU-Kommission abgesichert.
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">4. Datenerfassung bei Kontaktaufnahme</h4>
+                <p>
+                  Wenn Sie uns per Kontaktformular, Telefon oder E-Mail kontaktieren (z.&nbsp;B. für Produktanfragen oder Reservierungen), werden Ihre Angaben (Name, Telefonnummer, Nachrichtentext) zur Bearbeitung der Anfrage und möglicher Rückfragen gespeichert.
+                </p>
+                <p className="text-zinc-400 text-xs">
+                  Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (zur Durchführung vorvertraglicher Maßnahmen) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der schnellen Bearbeitung von Kundenanfragen). Wir geben diese Daten niemals ohne Ihre Einwilligung an Dritte weiter.
+                </p>
+              </section>
+
+              <section className="space-y-1.5 bg-[#c9a84c]/5 p-3.5 rounded-xl border border-[#c9a84c]/20 text-zinc-200">
+                <h4 className="font-heading font-bold text-[#c9a84c] text-sm">5. Keine zustimmungspflichtigen Tracking-Cookies (TDDDG)</h4>
+                <p className="text-xs">
+                  Wir verzichten auf dieser Website bewusst auf den Einsatz von Analyse-Tools (wie Google Analytics), Werbe-Trackern (wie Meta-Pixel) oder verhaltensbasierten Tracking-Cookies. Ein störendes Cookie-Banner nach § 25 TDDDG ist deshalb nicht erforderlich.
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">6. Ihre Rechte als betroffene Person</h4>
+                <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
+                <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-2 text-xs">
+                  <li><strong>Auskunft</strong> über Ihre bei uns gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
+                  <li><strong>Berichtigung</strong> unrichtiger Daten (Art. 16 DSGVO)</li>
+                  <li><strong>Löschung</strong> Ihrer Daten (Art. 17 DSGVO)</li>
+                  <li><strong>Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
+                  <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+                  <li><strong>Widerruf Ihrer Einwilligung</strong> jederzeit mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+                </ul>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">7. Beschwerderecht bei der Aufsichtsbehörde</h4>
+                <p className="text-xs text-zinc-400">
+                  Im Falle datenschutzrechtlicher Verstöße steht Ihnen ein Beschwerderecht bei einer zuständigen Aufsichtsbehörde zu (Art. 77 DSGVO). Die für unseren Standort zuständige Aufsichtsbehörde ist:<br />
+                  <em>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW)<br />
+                  Kavalleriestr. 2–4, 40213 Düsseldorf • Webseite: <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer" className="text-[#c9a84c] underline">www.ldi.nrw.de</a></em>
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">8. SSL- bzw. TLS-Verschlüsselung</h4>
+                <p className="text-xs text-zinc-400">
+                  Diese Seite nutzt aus Sicherheitsgründen und zum Schutz vertraulicher Daten eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile mit „https://“ beginnt und ein Schloss-Symbol im Browser angezeigt wird.
+                </p>
+              </section>
+            </div>
+
+            {/* Footer */}
+            <div className="p-3 sm:p-4 border-t border-stone-800 bg-[#0d0d10] flex justify-end">
+              <button 
+                onClick={() => setIsDatenschutzOpen(false)}
+                className="bg-[#c9a84c] hover:bg-[#b8963d] text-zinc-950 font-bold px-5 py-2 rounded-xl text-xs uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                Schließen
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ═══ MOBILE STICKY BOTTOM ACTION BAR (1-Tap Call & Reserve) ═══ */}
       <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#070709]/95 backdrop-blur-lg p-3 border-t border-stone-800 flex items-center justify-between gap-3 lg:hidden shadow-2xl">
