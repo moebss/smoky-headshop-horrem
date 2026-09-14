@@ -187,7 +187,7 @@ export default function App() {
                   <span className="text-xs text-blue-200 block">Tägliche News zu neuen Tabak-Lieferungen & Vape-Deals</span>
                 </div>
               </div>
-              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-md">
+              <a href="https://www.facebook.com/smoky.headshop" target="_blank" rel="noopener noreferrer" className="bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-md">
                 Facebook Öffnen ➔
               </a>
             </div>
@@ -414,6 +414,7 @@ export default function App() {
                 <div className="flex items-start gap-3"><MapPin className="w-5 h-5 text-[#c9a84c] shrink-0 mt-1" /><div><strong className="text-white block">Adresse:</strong>Bahnhofstraße 20, 50169 Kerpen-Horrem</div></div>
                 <div className="flex items-start gap-3"><Phone className="w-5 h-5 text-[#c9a84c] shrink-0 mt-1" /><div><strong className="text-white block">Telefon:</strong><a href="tel:022739918823" className="hover:text-[#c9a84c] font-bold text-[#c9a84c]">02273 9918823</a></div></div>
                 <div className="flex items-start gap-3"><Clock className="w-5 h-5 text-[#c9a84c] shrink-0 mt-1" /><div><strong className="text-white block">Öffnungszeiten:</strong>Montag – Freitag: 11:00 – 19:00 Uhr<br />Samstag: 11:00 – 16:00 Uhr</div></div>
+                <div className="flex items-start gap-3"><Facebook className="w-5 h-5 text-blue-400 shrink-0 mt-1" /><div><strong className="text-white block">Facebook:</strong><a href="https://www.facebook.com/smoky.headshop" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-bold text-blue-400 transition-colors">facebook.com/smoky.headshop</a></div></div>
               </div>
               <div className="rounded-2xl overflow-hidden border border-stone-800 aspect-[16/9]">
                 <iframe title="Smoky Headshop Horrem Map" src="https://maps.google.com/maps?q=Bahnhofstraße%2020%2C%2050169%20Kerpen-Horrem&t=&z=15&ie=UTF8&iwloc=&output=embed" className="w-full h-full border-0" loading="lazy" />
@@ -483,7 +484,7 @@ export default function App() {
             </div>
             <div className="space-y-3">
               <h4 className="font-heading text-sm font-bold uppercase text-white tracking-wider">Ladenlokal</h4>
-              <div className="space-y-2 text-xs"><p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-[#c9a84c] shrink-0" /><span>Bahnhofstraße 20, 50169 Kerpen</span></p><p className="flex items-center gap-2"><Facebook className="w-3.5 h-3.5 text-blue-400 shrink-0" /><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-bold text-zinc-300 transition-colors">Facebook Seite</a></p><p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-[#c9a84c] shrink-0" /><a href="tel:022739918823" className="hover:text-white font-bold text-[#c9a84c]">02273 9918823</a></p><p className="flex items-start gap-2 pt-1"><Clock className="w-3.5 h-3.5 text-[#c9a84c] shrink-0 mt-0.5" /><span>Mo–Fr: 11–19 Uhr | Sa: 11–16 Uhr</span></p></div>
+              <div className="space-y-2 text-xs"><p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-[#c9a84c] shrink-0" /><span>Bahnhofstraße 20, 50169 Kerpen</span></p><p className="flex items-center gap-2"><Facebook className="w-3.5 h-3.5 text-blue-400 shrink-0" /><a href="https://www.facebook.com/smoky.headshop" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-bold text-zinc-300 transition-colors">Facebook Seite</a></p><p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-[#c9a84c] shrink-0" /><a href="tel:022739918823" className="hover:text-white font-bold text-[#c9a84c]">02273 9918823</a></p><p className="flex items-start gap-2 pt-1"><Clock className="w-3.5 h-3.5 text-[#c9a84c] shrink-0 mt-0.5" /><span>Mo–Fr: 11–19 Uhr | Sa: 11–16 Uhr</span></p></div>
             </div>
             <div className="space-y-3">
               <h4 className="font-heading text-sm font-bold uppercase text-white tracking-wider">Rechtliches</h4>
