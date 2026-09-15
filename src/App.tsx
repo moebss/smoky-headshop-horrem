@@ -17,9 +17,19 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedGalleryImg, setSelectedGalleryImg] = useState<{ src: string; title: string; category: string; desc: string } | null>(null);
 
+  const trackPostHog = (event: string, properties?: Record<string, any>) => {
+    if (typeof window !== 'undefined' && window.posthog) {
+      window.posthog.capture(event, properties);
+    }
+  };
+
   const handleInlineSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
+    trackPostHog('lead_inquiry_submitted', {
+      source: 'contact_section',
+      site: 'smoky-headshop-horrem'
+    });
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
