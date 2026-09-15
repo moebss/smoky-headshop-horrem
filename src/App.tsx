@@ -701,11 +701,27 @@ export default function App() {
                 </p>
               </section>
 
-              <section className="space-y-1.5 bg-[#c9a84c]/5 p-3.5 rounded-xl border border-[#c9a84c]/20 text-zinc-200">
-                <h4 className="font-heading font-bold text-[#c9a84c] text-sm">5. Keine zustimmungspflichtigen Tracking-Cookies (TDDDG)</h4>
-                <p className="text-xs">
-                  Wir verzichten auf dieser Website bewusst auf den Einsatz von Analyse-Tools (wie Google Analytics), Werbe-Trackern (wie Meta-Pixel) oder verhaltensbasierten Tracking-Cookies. Ein störendes Cookie-Banner nach § 25 TDDDG ist deshalb nicht erforderlich.
+              <section className="space-y-1.5 bg-stone-900/60 p-4 rounded-xl border border-stone-800">
+                <h4 className="font-heading font-bold text-white text-sm text-[#c9a84c]">
+                  5. Webanalyse mit PostHog (EU-Cloud, datenschutzfreundlich)
+                </h4>
+                <p>
+                  Zur statistischen Reichweitenmessung, Fehlererkennung und technischen Optimierung unseres Webangebots setzen wir den Analysedienst <strong>PostHog</strong> ein (PostHog Inc., 2261 Market Street #4008, San Francisco, CA 94114, USA).
                 </p>
+                <div className="space-y-1.5 text-xs text-zinc-400 mt-2">
+                  <p>
+                    <strong className="text-zinc-200">Hosting in der Europäischen Union:</strong> Wir nutzen die <em>PostHog EU-Cloud</em> mit Serverstandort in Frankfurt am Main (Deutschland). Sämtliche Analysedaten werden ausschließlich auf Servern innerhalb der Europäischen Union verarbeitet und gespeichert.
+                  </p>
+                  <p>
+                    <strong className="text-zinc-200">Datensparsame Konfiguration:</strong> Wir betreiben PostHog in einer datenschutzfreundlichen Konfiguration (<code className="text-[#c9a84c]">person_profiles: identified_only</code>). Für anonyme Webseitenbesucher werden keine dauerhaften Nutzerprofile angelegt. Die Datenverarbeitung dient rein statistischen Zwecken; es findet kein Cross-Site-Tracking statt und Daten werden niemals zu Werbezwecken an Dritte weitergegeben.
+                  </p>
+                  <p>
+                    <strong className="text-zinc-200">Rechtsgrundlage:</strong> Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an einer fehlerfreien Bereitstellung, Ausfallsicherheit und bedarfsgerechten Optimierung unseres Internetauftritts (Art. 6 Abs. 1 lit. f DSGVO). Soweit technisch möglich, werden keine zustimmungspflichtigen Tracking-Cookies nach § 25 Abs. 1 TDDDG gesetzt.
+                  </p>
+                  <p>
+                    <strong className="text-zinc-200">Auftragsverarbeitung & SCC:</strong> Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung (Data Processing Agreement, DPA) einschließlich der EU-Standardvertragsklauseln zur Gewährleistung des europäischen Datenschutzniveaus.
+                  </p>
+                </div>
               </section>
 
               <section className="space-y-1.5">
