@@ -18,7 +18,8 @@ function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
 const SHOP_PHONE = "02273 9918823";
 const SHOP_PHONE_TEL = "tel:022739918823";
 const SHOP_EMAIL = "smoky-headshop@t-online.de";
-const SHOP_WHATSAPP_NUMBER = "4922739918823";
+const SHOP_WHATSAPP_NUMBER = "4915755555773";
+const SHOP_WHATSAPP_DISPLAY = "+49 1575 5555773";
 
 const getWhatsAppUrl = (productTitle?: string) => {
   const text = productTitle
@@ -610,7 +611,7 @@ export default function App() {
                           <span className="bg-[#25D366]/20 text-[#25D366] text-[10px] font-bold px-2 py-0.5 rounded uppercase">Empfohlen</span>
                         </div>
                         <p className="text-xs text-zinc-300 mt-0.5">
-                          Schnellste Antwort zu Sortiment, Preisen & Reservierungen
+                          {SHOP_WHATSAPP_DISPLAY} • Schnellste Antwort zu Sortiment, Preisen & Reservierungen
                         </p>
                       </div>
                     </div>
@@ -796,7 +797,7 @@ export default function App() {
                 className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-black font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-lg shadow-[#25D366]/20 transition-all hover:-translate-y-0.5"
               >
                 <WhatsAppIcon className="w-5 h-5 fill-black" />
-                <span>Direkt per WhatsApp anfragen</span>
+                <span>Direkt per WhatsApp ({SHOP_WHATSAPP_DISPLAY})</span>
               </a>
 
               {/* Email Option */}
