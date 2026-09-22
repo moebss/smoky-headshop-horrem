@@ -57,7 +57,8 @@ export default function App() {
     { label: 'Über uns', href: '#about' },
     { label: 'Galerie', href: '#gallery' },
     { label: 'Bewertungen', href: '#reviews' },
-    { label: 'Kontakt', href: '#contact-section' },
+    { label: 'Region', href: '#region' },
+    { label: 'Kontakt & Anfahrt', href: '#contact-section' },
     { label: 'FAQ', href: '#faq' },
   ];
 
@@ -176,11 +177,11 @@ export default function App() {
             <div className="flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-black/90 backdrop-blur-md border border-[#c9a84c]/50 text-[#c9a84c] text-xs font-bold uppercase tracking-widest shadow-2xl">
                 <span className="smoky-illuminated-text text-sm font-black tracking-widest">SMOKY</span>
-                <span className="text-[#c9a84c] font-black border-l border-stone-800 pl-2.5">Head&Shisha Shop Horrem</span>
+                <span className="text-[#c9a84c] font-black border-l border-stone-800 pl-2.5">Head & Shisha Shop Horrem</span>
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#0b0b0e]/80 backdrop-blur-md border border-stone-800 text-zinc-300 text-xs font-bold uppercase tracking-wider">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#c9a84c]" />
-                <span>Bahnhofstraße 20</span>
+                <span>Bahnhofstraße 20 • Kerpen / Erftkreis</span>
               </div>
             </div>
 
@@ -190,7 +191,7 @@ export default function App() {
             </h1>
 
             <p className="text-zinc-300 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl drop-shadow-md">
-              Der erste Head-&Shishashop im Rhein-Erft-Kreis – seit Februar 2013 eure Anlaufstelle für Edelstahl-Shishas, Tabak von A wie Al Fakher bis Z wie Zomo, Vapes, Bongs, Vaporizer & Rauchzubehör auf 75 m².
+              <strong className="text-white font-bold">Dein Headshop & Shishashop in Kerpen-Horrem:</strong> Der erste Fachshop im Rhein-Erft-Kreis – seit Februar 2013 eure Anlaufstelle für Edelstahl-Shishas, Tabak von A wie Al Fakher bis Z wie Zomo, Vapes, Bongs, Vaporizer & Rauchzubehör auf 75 m².
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
@@ -430,6 +431,89 @@ export default function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ REGION & EINZUGSGEBIET (Local SEO Rhein-Erft-Kreis & Köln-West) ═══ */}
+      <section id="region" className="py-24 bg-[#070709] border-b border-stone-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span className="text-[#c9a84c] font-bold text-xs uppercase tracking-widest block">
+              Zentral erreichbar im Rhein-Erft-Kreis
+            </span>
+            <h2 className="font-heading text-4xl sm:text-5xl uppercase tracking-tight text-white font-black">
+              DEIN HEAD- & SHISHASHOP FÜR <span className="text-[#c9a84c]">KERPEN, BERGHEIM & UMGEBUNG</span>
+            </h2>
+            <p className="text-zinc-400 text-sm sm:text-base leading-relaxed">
+              Direkt am Bahnhof Horrem – der verkehrsgünstige Treffpunkt für Shisha-Liebhaber, Dampfer und Headshop-Kunden aus dem gesamten Rhein-Erft-Kreis und dem Kölner Westen.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="p-6 rounded-2xl bg-[#131318] border border-stone-800 hover:border-[#c9a84c]/60 transition-all duration-300 space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#c9a84c] bg-[#c9a84c]/10 border border-[#c9a84c]/30 px-2.5 py-1 rounded-md">Direkt vor Ort</span>
+                  <span className="text-xs text-zinc-400 font-mono">2 Min. Fußweg</span>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-white mb-1.5">Horrem Bahnhof</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  Nur 200 Meter vom Bahnhof Horrem entfernt (Bahnhofstraße 20). Bequem erreichbar für Berufspendler und Anwohner zu Fuß.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-stone-800/80 text-[11px] text-zinc-500 font-medium">
+                Bahnhofstr. 20 • 50169 Kerpen
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#131318] border border-stone-800 hover:border-[#c9a84c]/60 transition-all duration-300 space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#c9a84c] bg-[#c9a84c]/10 border border-[#c9a84c]/30 px-2.5 py-1 rounded-md">Nachbarorte</span>
+                  <span className="text-xs text-zinc-400 font-mono">ca. 5–8 Min.</span>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-white mb-1.5">Kerpen & Sindorf</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  Aus Kerpen-Mitte, Sindorf, Mödrath oder Manheim in wenigen Minuten mit dem Auto oder in einer S-Bahn-Station bei uns.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-stone-800/80 text-[11px] text-zinc-500 font-medium">
+                S12 / S19 & B55 Anbindung
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#131318] border border-stone-800 hover:border-[#c9a84c]/60 transition-all duration-300 space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#c9a84c] bg-[#c9a84c]/10 border border-[#c9a84c]/30 px-2.5 py-1 rounded-md">Erftkreis</span>
+                  <span className="text-xs text-zinc-400 font-mono">ca. 10 Min.</span>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-white mb-1.5">Bergheim & Quadrath</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  Schnelle Anfahrt über die L277 und B55 aus Bergheim, Quadrath-Ichendorf und Elsdorf. Riesige Tabak- und Zubehörauswahl vor Ort.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-stone-800/80 text-[11px] text-zinc-500 font-medium">
+                L277 / B55 / A61 Abfahrt
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#131318] border border-stone-800 hover:border-[#c9a84c]/60 transition-all duration-300 space-y-3 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#c9a84c] bg-[#c9a84c]/10 border border-[#c9a84c]/30 px-2.5 py-1 rounded-md">Köln & Umland</span>
+                  <span className="text-xs text-zinc-400 font-mono">ca. 12–15 Min.</span>
+                </div>
+                <h3 className="font-heading text-lg font-bold text-white mb-1.5">Frechen, Pulheim & Köln</h3>
+                <p className="text-xs text-zinc-400 leading-relaxed">
+                  Mit RE1, RE9 oder S-Bahn ohne Parkplatzsuche und City-Stau aus Frechen, Köln-Ehrenfeld oder Köln Hbf direkt zum Bahnhof Horrem.
+                </p>
+              </div>
+              <div className="pt-3 border-t border-stone-800/80 text-[11px] text-zinc-500 font-medium">
+                RE1 / RE9 / A4 Autobahnkreuz
+              </div>
+            </div>
           </div>
         </div>
       </section>
