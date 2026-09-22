@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, Clock, Facebook, Star, Flame, ShieldCheck, CheckCircle2, ArrowRight, X, ShoppingBag, Send, ChevronDown, HelpCircle, AlertCircle, Menu, XIcon, Users, Heart, ZoomIn, Camera, Scale, Lock } from 'lucide-react';
+import { Phone, MapPin, Clock, Facebook, Star, Flame, ShieldCheck, CheckCircle2, ArrowRight, X, ShoppingBag, Send, ChevronDown, HelpCircle, AlertCircle, Menu, XIcon, Users, Heart, ZoomIn, Camera, Scale, Lock, Mail } from 'lucide-react';
 
 import heroShisha from './images/hero_shisha.jpg';
 import tobaccoImg from './images/tobacco.jpg';
@@ -7,13 +7,42 @@ import vapesImg from './images/vapes.jpg';
 import headshopImg from './images/headshop.jpg';
 import smokyLogo from './images/smoky_logo.png';
 
+function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.954-1.399C8.423 21.498 10.153 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+    </svg>
+  );
+}
+
+const SHOP_PHONE = "02273 9918823";
+const SHOP_PHONE_TEL = "tel:022739918823";
+const SHOP_EMAIL = "smoky-headshop@t-online.de";
+const SHOP_WHATSAPP_NUMBER = "4922739918823";
+
+const getWhatsAppUrl = (productTitle?: string) => {
+  const text = productTitle
+    ? `Hallo Smoky-Team, ich habe eine Frage zu "${productTitle}": Habt ihr das aktuell im Ladenlokal in Horrem vorrätig oder könnt ihr es für mich zurücklegen?`
+    : `Hallo Smoky-Team, ich habe eine Frage zu eurem Sortiment / Vorbestellung in Horrem:`;
+  return `https://wa.me/${SHOP_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+};
+
+const getMailToUrl = (productTitle?: string) => {
+  const subject = productTitle ? `Produktanfrage: ${productTitle}` : `Anfrage an Smoky Head&Shisha Shop Horrem`;
+  const body = productTitle
+    ? `Hallo Smoky-Team,\n\nich habe eine Frage zu folgendem Produkt aus eurem Sortiment:\n- Produkt: ${productTitle}\n\nHabt ihr das aktuell im Ladenlokal in Horrem vorrätig oder könnt ihr es für mich reservieren?\n\nViele Grüße`
+    : `Hallo Smoky-Team,\n\nich möchte folgendes bei euch anfragen:\n\nViele Grüße`;
+  return `mailto:${SHOP_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
 export default function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isImpressumOpen, setIsImpressumOpen] = useState(false);
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
+  const [inquiryProduct, setInquiryProduct] = useState<string | null>(null);
+  const [showInteractiveMap, setShowInteractiveMap] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'shisha' | 'vape' | 'headshop'>('all');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedGalleryImg, setSelectedGalleryImg] = useState<{ src: string; title: string; category: string; desc: string } | null>(null);
 
@@ -21,16 +50,6 @@ export default function App() {
     if (typeof window !== 'undefined' && window.posthog) {
       window.posthog.capture(event, properties);
     }
-  };
-
-  const handleInlineSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-    trackPostHog('lead_inquiry_submitted', {
-      source: 'contact_section',
-      site: 'smoky-headshop-horrem'
-    });
-    setTimeout(() => setFormSubmitted(false), 5000);
   };
 
   const navLinks = [
@@ -328,10 +347,16 @@ export default function App() {
                   </div>
                 </div>
                 <div className="p-6 pt-0">
-                  <a href="#contact-section" className="w-full bg-stone-900 hover:bg-[#c9a84c] text-zinc-300 hover:text-black border border-stone-800 hover:border-[#c9a84c] font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                  <button 
+                    onClick={() => {
+                      setInquiryProduct(p.title);
+                      trackPostHog('product_inquiry_clicked', { product: p.title, category: p.category });
+                    }}
+                    className="w-full bg-stone-900 hover:bg-[#c9a84c] text-zinc-300 hover:text-black border border-stone-800 hover:border-[#c9a84c] font-bold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
+                  >
                     <span>Im Laden Anfragen</span>
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -426,30 +451,138 @@ export default function App() {
                 <div className="flex items-start gap-3"><Clock className="w-5 h-5 text-[#c9a84c] shrink-0 mt-1" /><div><strong className="text-white block">Öffnungszeiten:</strong>Montag – Freitag: 11:00 – 19:00 Uhr<br />Samstag: 11:00 – 16:00 Uhr</div></div>
                 <div className="flex items-start gap-3"><Facebook className="w-5 h-5 text-blue-400 shrink-0 mt-1" /><div><strong className="text-white block">Facebook:</strong><a href="https://www.facebook.com/smoky.headshop" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 font-bold text-blue-400 transition-colors">facebook.com/smoky.headshop</a></div></div>
               </div>
-              <div className="rounded-2xl overflow-hidden border border-stone-800 aspect-[16/9]">
-                <iframe title="Smoky Headshop Horrem Map" src="https://maps.google.com/maps?q=Bahnhofstraße%2020%2C%2050169%20Kerpen-Horrem&t=&z=15&ie=UTF8&iwloc=&output=embed" className="w-full h-full border-0" loading="lazy" />
+              <div className="rounded-2xl overflow-hidden border border-stone-800 aspect-[16/9] relative bg-stone-900 group">
+                {showInteractiveMap ? (
+                  <iframe title="Smoky Headshop Horrem Map" src="https://maps.google.com/maps?q=Bahnhofstraße%2020%2C%2050169%20Kerpen-Horrem&t=&z=15&ie=UTF8&iwloc=&output=embed" className="w-full h-full border-0" loading="lazy" />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-[#131318] to-[#0d0d12] space-y-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#c9a84c]/10 text-[#c9a84c] border border-[#c9a84c]/30 flex items-center justify-center">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-heading font-bold text-white text-sm">Ladenlokal in Kerpen-Horrem</h4>
+                      <p className="text-xs text-zinc-400 mt-0.5">Bahnhofstraße 20 • 2 Min. zu Fuß vom Bahnhof Horrem</p>
+                    </div>
+                    <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                      <a 
+                        href="https://maps.google.com/?q=Bahnhofstraße+20+50169+Kerpen" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        onClick={() => trackPostHog('google_maps_route_clicked', { source: 'map_card' })}
+                        className="inline-flex items-center gap-2 bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold px-3.5 py-2 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md"
+                      >
+                        <span>Route in Maps planen</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                      <button
+                        onClick={() => {
+                          setShowInteractiveMap(true);
+                          trackPostHog('interactive_map_activated');
+                        }}
+                        className="inline-flex items-center gap-1.5 bg-stone-800 hover:bg-stone-700 text-zinc-300 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer"
+                      >
+                        <span>Karte laden</span>
+                      </button>
+                    </div>
+                    <p className="text-[10px] text-zinc-500">
+                      DSGVO-Schutz: Externe Google-Verbindung erst bei Klick aktiv.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
 
-            <div className="lg:col-span-6 bg-[#131318] border border-stone-800 rounded-3xl p-8 shadow-2xl">
-              <h3 className="font-heading text-2xl font-black text-white uppercase mb-2">PRODUKT ANFRAGEN ODER RESERVIEREN</h3>
-              <p className="text-xs text-zinc-400 mb-6">Du suchst einen bestimmten Tabak, ein Shisha-Modell oder Vape-Flavors? Schick uns deine Anfrage!</p>
-              {formSubmitted ? (
-                <div className="p-6 rounded-2xl bg-[#c9a84c]/10 border border-[#c9a84c]/40 text-[#c9a84c] text-center space-y-2">
-                  <CheckCircle2 className="w-10 h-10 text-[#c9a84c] mx-auto" />
-                  <h4 className="font-bold text-white text-base">Vielen Dank für deine Anfrage!</h4>
-                  <p className="text-xs text-zinc-400">Wir prüfen deine Produktanfrage und melden uns kurzfristig bei dir.</p>
+            <div className="lg:col-span-6 bg-[#131318] border border-stone-800 rounded-3xl p-8 shadow-2xl space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#c9a84c]/10 border border-[#c9a84c]/30 text-[#c9a84c] text-[11px] font-extrabold uppercase tracking-wider mb-3">
+                  ⚡ Direktanfrage ohne Formular
                 </div>
-              ) : (
-                <form onSubmit={handleInlineSubmit} className="space-y-4">
-                  <div><label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-1">Dein Name *</label><input type="text" required placeholder="z. B. Alex Müller" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3.5 text-xs text-white focus:border-[#c9a84c] outline-none transition-colors" /></div>
-                  <div><label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-1">Telefon / WhatsApp *</label><input type="tel" required placeholder="z. B. 0170 1234567" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3.5 text-xs text-white focus:border-[#c9a84c] outline-none transition-colors" /></div>
-                  <div><label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-1">Gewünschte Produkte / Nachricht *</label><textarea required rows={4} placeholder="Welchen Tabak, welche Shisha oder Vapes möchtest du anfragen?" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3.5 text-xs text-white focus:border-[#c9a84c] outline-none transition-colors" /></div>
-                  <button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-[#c9a84c]/20 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                    <Send className="w-4 h-4" /><span>Produkt-Anfrage Absenden</span>
-                  </button>
-                </form>
-              )}
+                <h3 className="font-heading text-2xl sm:text-3xl font-black text-white uppercase mb-2">
+                  SCHNELL ANFRAGEN & RESERVIEREN
+                </h3>
+                <p className="text-xs sm:text-sm text-zinc-400">
+                  Kein lästiges Formular ausfüllen! Schreib uns direkt über WhatsApp oder per E-Mail für Tabaksorten, Shisha-Setups, Vapes oder Vorbestellungen – wir antworten direkt aus dem Ladenlokal.
+                </p>
+              </div>
+
+              {/* Direct Action Options */}
+              <div className="space-y-3.5">
+                {/* WhatsApp Action Card */}
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackPostHog('contact_whatsapp_clicked', { source: 'contact_section' })}
+                  className="group block p-5 rounded-2xl bg-gradient-to-r from-[#25D366]/15 via-[#1b3d2b]/60 to-stone-900 border border-[#25D366]/40 hover:border-[#25D366] transition-all duration-300 shadow-lg hover:-translate-y-0.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-[#25D366] text-black flex items-center justify-center shadow-md shrink-0 group-hover:scale-105 transition-transform">
+                        <WhatsAppIcon className="w-6 h-6 fill-current" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-heading font-extrabold text-white text-base">Direkt via WhatsApp</h4>
+                          <span className="bg-[#25D366]/20 text-[#25D366] text-[10px] font-bold px-2 py-0.5 rounded uppercase">Empfohlen</span>
+                        </div>
+                        <p className="text-xs text-zinc-300 mt-0.5">
+                          Schnellste Antwort zu Sortiment, Preisen & Reservierungen
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-[#25D366] shrink-0 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </a>
+
+                {/* Email Action Card */}
+                <a
+                  href={getMailToUrl()}
+                  onClick={() => trackPostHog('contact_email_clicked', { source: 'contact_section' })}
+                  className="group block p-5 rounded-2xl bg-stone-900/90 border border-stone-800 hover:border-[#c9a84c]/60 transition-all duration-300 shadow-md hover:-translate-y-0.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-[#c9a84c]/10 border border-[#c9a84c]/30 text-[#c9a84c] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <Mail className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-extrabold text-white text-base">Per E-Mail anfragen</h4>
+                        <p className="text-xs text-zinc-400 mt-0.5">
+                          smoky-headshop@t-online.de
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-zinc-400 group-hover:text-[#c9a84c] group-hover:translate-x-1 transition-all" />
+                  </div>
+                </a>
+
+                {/* Phone Call Card */}
+                <a
+                  href={SHOP_PHONE_TEL}
+                  onClick={() => trackPostHog('contact_call_clicked', { source: 'contact_section' })}
+                  className="group block p-4.5 rounded-2xl bg-stone-900/60 border border-stone-800/80 hover:border-zinc-700 transition-all duration-300 hover:-translate-y-0.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-11 h-11 rounded-xl bg-stone-800 text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <Phone className="w-5 h-5 text-[#c9a84c]" />
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-extrabold text-white text-sm">Telefonisch nachfragen</h4>
+                        <p className="text-xs text-zinc-400 mt-0.5">
+                          02273 9918823 (Mo–Fr: 11–19 Uhr | Sa: 11–16 Uhr)
+                        </p>
+                      </div>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-zinc-500 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </a>
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-stone-900/50 border border-stone-800 text-[11px] text-zinc-400 flex items-center gap-2.5">
+                <ShieldCheck className="w-4 h-4 text-[#c9a84c] shrink-0" />
+                <span>100% Datenschutz: Keine Speicherung auf der Webseite. Direkter Austausch über deine gewohnte App.</span>
+              </div>
             </div>
           </div>
         </div>
@@ -527,8 +660,97 @@ export default function App() {
         </div>
       )}
 
-      {/* ═══ MODALS ═══ */}
-      {isContactOpen && (<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"><div className="bg-[#131318] border border-[#c9a84c]/30 rounded-2xl max-w-md w-full p-6 space-y-4"><div className="flex justify-between items-center border-b border-stone-800 pb-3"><h3 className="font-heading text-lg font-bold text-white">Produkt-Anfrage</h3><button onClick={() => setIsContactOpen(false)} className="text-zinc-400 hover:text-white"><X className="w-5 h-5" /></button></div><form onSubmit={(e) => { e.preventDefault(); alert('Vielen Dank!'); setIsContactOpen(false); }} className="space-y-3"><input type="text" required placeholder="Dein Name *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><input type="tel" required placeholder="Deine Telefonnummer *" className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><textarea placeholder="Welches Produkt möchtest du anfragen?" rows={3} className="w-full bg-[#0b0b0e] border border-stone-800 rounded-xl p-3 text-xs text-white" /><button type="submit" className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 rounded-xl text-xs uppercase tracking-wider">Absenden</button></form></div></div>)}
+      {/* ═══ PRODUKT-ANFRAGE & SCHNELLKONTAKT MODAL ═══ */}
+      {(inquiryProduct || isContactOpen) && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+          onClick={() => {
+            setInquiryProduct(null);
+            setIsContactOpen(false);
+          }}
+        >
+          <div 
+            className="relative max-w-md w-full bg-[#131318] border border-[#c9a84c]/40 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-5"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-start border-b border-stone-800 pb-4">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#c9a84c] block mb-1">
+                  ⚡ 1-Klick Direktanfrage
+                </span>
+                <h3 className="font-heading text-xl sm:text-2xl font-bold text-white leading-snug">
+                  {inquiryProduct ? inquiryProduct : "Produkt anfragen & reservieren"}
+                </h3>
+              </div>
+              <button 
+                onClick={() => {
+                  setInquiryProduct(null);
+                  setIsContactOpen(false);
+                }} 
+                className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-stone-800 transition-colors cursor-pointer"
+                aria-label="Schließen"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+              Wähle deinen bevorzugten Kanal – wir prüfen die Verfügbarkeit im Ladenlokal in Horrem und antworten dir direkt:
+            </p>
+
+            <div className="space-y-3">
+              {/* WhatsApp Option */}
+              <a
+                href={getWhatsAppUrl(inquiryProduct || undefined)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackPostHog('modal_inquiry_whatsapp', { product: inquiryProduct || 'general' });
+                  setInquiryProduct(null);
+                  setIsContactOpen(false);
+                }}
+                className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-black font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-lg shadow-[#25D366]/20 transition-all hover:-translate-y-0.5"
+              >
+                <WhatsAppIcon className="w-5 h-5 fill-black" />
+                <span>Direkt per WhatsApp anfragen</span>
+              </a>
+
+              {/* Email Option */}
+              <a
+                href={getMailToUrl(inquiryProduct || undefined)}
+                onClick={() => {
+                  trackPostHog('modal_inquiry_email', { product: inquiryProduct || 'general' });
+                  setInquiryProduct(null);
+                  setIsContactOpen(false);
+                }}
+                className="w-full bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 shadow-lg shadow-[#c9a84c]/20 transition-all hover:-translate-y-0.5"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Per E-Mail anfragen</span>
+              </a>
+
+              {/* Phone Call Option */}
+              <a
+                href={SHOP_PHONE_TEL}
+                onClick={() => {
+                  trackPostHog('modal_inquiry_call', { product: inquiryProduct || 'general' });
+                  setInquiryProduct(null);
+                  setIsContactOpen(false);
+                }}
+                className="w-full bg-stone-900 hover:bg-stone-800 border border-stone-800 text-zinc-200 font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
+              >
+                <Phone className="w-4 h-4 text-[#c9a84c]" />
+                <span>Telefonisch: 02273 9918823</span>
+              </a>
+            </div>
+
+            <div className="text-[11px] text-zinc-500 text-center pt-2 border-t border-stone-800/80 flex items-center justify-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#c9a84c]" />
+              <span>Kein Formular • Keine Speicherung auf dem Server</span>
+            </div>
+          </div>
+        </div>
+      )}
       {isImpressumOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
           <div className="relative max-w-2xl w-full max-h-[85vh] bg-[#111115] border border-[#c9a84c]/40 rounded-2xl flex flex-col shadow-2xl overflow-hidden">
@@ -692,34 +914,42 @@ export default function App() {
               </section>
 
               <section className="space-y-1.5">
-                <h4 className="font-heading font-bold text-white text-sm">4. Datenerfassung bei Kontaktaufnahme</h4>
+                <h4 className="font-heading font-bold text-white text-sm">4. Datenerfassung bei Kontaktaufnahme (WhatsApp & E-Mail)</h4>
                 <p>
-                  Wenn Sie uns per Kontaktformular, Telefon oder E-Mail kontaktieren (z.&nbsp;B. für Produktanfragen oder Reservierungen), werden Ihre Angaben (Name, Telefonnummer, Nachrichtentext) zur Bearbeitung der Anfrage und möglicher Rückfragen gespeichert.
+                  Wenn Sie uns per E-Mail, Telefon oder über den Messenger-Dienst <strong>WhatsApp</strong> kontaktieren (z.&nbsp;B. für Produktanfragen, Preis- oder Sortimentsauskünfte oder Vorbestellungen), werden Ihre übermittelten Daten (z.&nbsp;B. Name, Telefonnummer, Inhalt der Nachricht) ausschließlich zur Bearbeitung Ihres Anliegens und für eventuelle Anschlussfragen verarbeitet.
                 </p>
-                <p className="text-zinc-400 text-xs">
-                  Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (zur Durchführung vorvertraglicher Maßnahmen) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der schnellen Bearbeitung von Kundenanfragen). Wir geben diese Daten niemals ohne Ihre Einwilligung an Dritte weiter.
-                </p>
+                <div className="space-y-1.5 text-xs text-zinc-400 mt-2">
+                  <p>
+                    <strong className="text-zinc-200">Rechtsgrundlage:</strong> Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (zur Durchführung vorvertraglicher Maßnahmen auf Anfrage der betroffenen Person) bzw. Art. 6 Abs. 1 lit. f DSGVO (unser berechtigtes Interesse an einer schnellen, unkomplizierten Kundenkommunikation).
+                  </p>
+                  <p>
+                    <strong className="text-zinc-200">Hinweis zu WhatsApp:</strong> Wenn Sie uns per WhatsApp kontaktieren, nutzen Sie den Dienst der <em>Meta Platforms Ireland Ltd., 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland</em>. Nachrichten und Anrufe sind Ende-zu-Ende verschlüsselt. Wir weisen darauf hin, dass die Nutzung von WhatsApp auf Ihrer eigenen freiwilligen Entscheidung beruht. Alternativ steht Ihnen jederzeit der Kontakt per Telefon (02273 9918823) oder E-Mail (smoky-headshop@t-online.de) offen.
+                  </p>
+                  <p>
+                    <strong className="text-zinc-200">Keine Speicherung auf dieser Website:</strong> Diese Website speichert keine Kontaktformulardaten in einer Webserver-Datenbank. Die Kommunikation erfolgt direkt über Ihr jeweiliges E-Mail-Programm bzw. Ihren WhatsApp-Client.
+                  </p>
+                </div>
               </section>
 
               <section className="space-y-1.5 bg-stone-900/60 p-4 rounded-xl border border-stone-800">
                 <h4 className="font-heading font-bold text-white text-sm text-[#c9a84c]">
-                  5. Webanalyse mit PostHog (EU-Cloud, datenschutzfreundlich)
+                  5. Webanalyse mit PostHog (EU-Cloud Frankfurt, datensparsam & cookielos)
                 </h4>
                 <p>
                   Zur statistischen Reichweitenmessung, Fehlererkennung und technischen Optimierung unseres Webangebots setzen wir den Analysedienst <strong>PostHog</strong> ein (PostHog Inc., 2261 Market Street #4008, San Francisco, CA 94114, USA).
                 </p>
                 <div className="space-y-1.5 text-xs text-zinc-400 mt-2">
                   <p>
-                    <strong className="text-zinc-200">Hosting in der Europäischen Union:</strong> Wir nutzen die <em>PostHog EU-Cloud</em> mit Serverstandort in Frankfurt am Main (Deutschland). Sämtliche Analysedaten werden ausschließlich auf Servern innerhalb der Europäischen Union verarbeitet und gespeichert.
+                    <strong className="text-zinc-200">Hosting in der Europäischen Union (Frankfurt am Main):</strong> Wir nutzen ausschließlich die <em>PostHog EU-Cloud</em> mit Serverstandort in Frankfurt am Main (Deutschland). Sämtliche Analysedaten verbleiben auf Servern innerhalb der EU.
                   </p>
                   <p>
-                    <strong className="text-zinc-200">Datensparsame Konfiguration:</strong> Wir betreiben PostHog in einer datenschutzfreundlichen Konfiguration (<code className="text-[#c9a84c]">person_profiles: identified_only</code>). Für anonyme Webseitenbesucher werden keine dauerhaften Nutzerprofile angelegt. Die Datenverarbeitung dient rein statistischen Zwecken; es findet kein Cross-Site-Tracking statt und Daten werden niemals zu Werbezwecken an Dritte weitergegeben.
+                    <strong className="text-zinc-200">Cookielos & In-Memory-Verarbeitung:</strong> PostHog ist in einer datensparsamen Konfiguration eingebunden (<code className="text-[#c9a84c]">person_profiles: identified_only</code>, <code className="text-[#c9a84c]">persistence: 'memory'</code>). Es werden keine zustimmungspflichtigen Tracking-Cookies oder dauerhaften Kennungen auf Ihrem Endgerät nach § 25 Abs. 1 TDDDG abgelegt. IP-Adressen werden vor der Speicherung anonymisiert.
                   </p>
                   <p>
-                    <strong className="text-zinc-200">Rechtsgrundlage:</strong> Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an einer fehlerfreien Bereitstellung, Ausfallsicherheit und bedarfsgerechten Optimierung unseres Internetauftritts (Art. 6 Abs. 1 lit. f DSGVO). Soweit technisch möglich, werden keine zustimmungspflichtigen Tracking-Cookies nach § 25 Abs. 1 TDDDG gesetzt.
+                    <strong className="text-zinc-200">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer fehlerfreien Bereitstellung, Betriebssicherheit und Reichweitenmessung unseres Webauftritts).
                   </p>
                   <p>
-                    <strong className="text-zinc-200">Auftragsverarbeitung & SCC:</strong> Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung (Data Processing Agreement, DPA) einschließlich der EU-Standardvertragsklauseln zur Gewährleistung des europäischen Datenschutzniveaus.
+                    <strong className="text-zinc-200">Auftragsverarbeitung & SCC:</strong> Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung (Data Processing Agreement, DPA) inklusive EU-Standardvertragsklauseln.
                   </p>
                 </div>
               </section>
@@ -752,6 +982,24 @@ export default function App() {
                   Diese Seite nutzt aus Sicherheitsgründen und zum Schutz vertraulicher Daten eine SSL-/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile mit „https://“ beginnt und ein Schloss-Symbol im Browser angezeigt wird.
                 </p>
               </section>
+
+              <section className="space-y-1.5 bg-stone-900/60 p-4 rounded-xl border border-stone-800">
+                <h4 className="font-heading font-bold text-white text-sm text-[#c9a84c]">
+                  9. Lokale Schriftarten (Self-Hosted Fonts – LG München I konform)
+                </h4>
+                <p className="text-xs text-zinc-400">
+                  Diese Website nutzt zur einheitlichen und ansprechenden typografischen Darstellung Schriftarten, die <strong>vollständig lokal</strong> auf unserem Webserver gehostet werden. Beim Aufruf unserer Seiten wird <strong>keine Verbindung</strong> zu externen Servern von Google Fonts aufgebaut und Ihre IP-Adresse wird nicht an Dritte übermittelt.
+                </p>
+              </section>
+
+              <section className="space-y-1.5">
+                <h4 className="font-heading font-bold text-white text-sm">
+                  10. Interaktive Standortkarte (2-Klick-Lösung für Google Maps)
+                </h4>
+                <p className="text-xs text-zinc-400">
+                  Wir binden auf dieser Website eine Anfahrtskarte über eine datenschutzfreundliche <strong>2-Klick-Lösung</strong> ein. Standardmäßig ist die interaktive Google-Maps-Karte deaktiviert, sodass beim Aufrufen der Website keinerlei personenbezogene Daten (wie Ihre IP-Adresse) an Google übertragen werden. Erst wenn Sie aktiv auf „Karte laden“ klicken, wird eine Verbindung zu den Servern von Google (Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland) hergestellt.
+                </p>
+              </section>
             </div>
 
             {/* Footer */}
@@ -767,15 +1015,25 @@ export default function App() {
         </div>
       )}
 
-      {/* ═══ MOBILE STICKY BOTTOM ACTION BAR (1-Tap Call & Reserve) ═══ */}
+      {/* ═══ MOBILE STICKY BOTTOM ACTION BAR (1-Tap Call & WhatsApp) ═══ */}
       <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#070709]/95 backdrop-blur-lg p-3 border-t border-stone-800 flex items-center justify-between gap-3 lg:hidden shadow-2xl">
-        <a href="tel:022739918823" className="flex-1 bg-stone-900 hover:bg-stone-800 border border-stone-700 text-white font-bold py-3 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+        <a 
+          href={SHOP_PHONE_TEL} 
+          onClick={() => trackPostHog('mobile_sticky_call_clicked')}
+          className="flex-1 bg-stone-900 hover:bg-stone-800 border border-stone-700 text-white font-bold py-3 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2"
+        >
           <Phone className="w-4 h-4 text-[#c9a84c]" />
           <span>Anrufen</span>
         </a>
-        <a href="#contact-section" className="flex-1 bg-[#c9a84c] hover:bg-[#b8963d] text-black font-extrabold py-3 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#c9a84c]/20">
-          <ShoppingBag className="w-4 h-4" />
-          <span>Reservieren</span>
+        <a 
+          href={getWhatsAppUrl()} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          onClick={() => trackPostHog('mobile_sticky_whatsapp_clicked')}
+          className="flex-1 bg-[#25D366] hover:bg-[#20ba5a] text-black font-extrabold py-3 px-3 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#25D366]/20 transition-all"
+        >
+          <WhatsAppIcon className="w-4 h-4 fill-black" />
+          <span>WhatsApp</span>
         </a>
       </div>
     </div>
