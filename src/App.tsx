@@ -191,8 +191,8 @@ export default function App() {
               <span className="text-[#c9a84c] drop-shadow-[0_10px_20px_rgba(201,168,76,0.3)]">ERSTMAL NOCH 'NEN KOPF MACHEN.</span>
             </h1>
 
-            <p className="text-zinc-300 text-lg sm:text-xl font-medium leading-relaxed max-w-2xl drop-shadow-md">
-              <strong className="text-white font-bold">Dein Headshop & Shishashop in Kerpen-Horrem:</strong> Der erste Fachshop im Rhein-Erft-Kreis – seit Februar 2013 eure Anlaufstelle für Edelstahl-Shishas, Tabak von A wie Al Fakher bis Z wie Zomo, Vapes, Bongs, Vaporizer & Rauchzubehör auf 75 m².
+            <p className="text-zinc-300 text-base sm:text-lg font-medium leading-relaxed max-w-2xl drop-shadow-md">
+              <strong className="text-white font-bold">Dein Headshop & Shishashop in Kerpen-Horrem:</strong> Der erste Fachshop im Rhein-Erft-Kreis – seit Februar 2013 eure Anlaufstelle an der Bahnhofstraße 20 (200 m vom Bahnhof Horrem). Auf 75 m² Ladenfläche erwarten dich Premium-Edelstahl-Shishas, über 100 Tabaksorten von Al Fakher bis Zomo, 26mm Naturkohle, Vapes, Glasbongs, Vaporizer und Raucherzubehör mit ehrlicher Fachberatung.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
@@ -432,6 +432,24 @@ export default function App() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Compliant Direct Google Review Harvest Button (Sterling Sky 18-Day Velocity Rule) */}
+          <div className="mt-12 text-center">
+            <a 
+              href="https://maps.google.com/?q=Bahnhofstraße+20+50169+Kerpen" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              onClick={() => trackPostHog('google_review_cta_clicked')}
+              className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-stone-900 hover:bg-stone-800 border border-[#c9a84c]/40 hover:border-[#c9a84c] text-white text-xs font-extrabold uppercase tracking-wider transition-all duration-300 shadow-lg hover:-translate-y-0.5"
+            >
+              <Star className="w-4 h-4 fill-[#c9a84c] text-[#c9a84c]" />
+              <span>Bewertung auf Google schreiben</span>
+              <ArrowRight className="w-4 h-4 text-[#c9a84c]" />
+            </a>
+            <p className="text-[11px] text-zinc-500 mt-2.5">
+              Direktes & unverfälschtes Kundenfeedback – hilft unserem Familienbetrieb in Horrem enorm!
+            </p>
           </div>
         </div>
       </section>
